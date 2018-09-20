@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Transform Rotate</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      font-family: Arial;
+    }
+    .container {
+      border: 1px solid red;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: 1s ease;
+    }
+    .container:hover .cuadrado.a {
+      transform: rotate(-45deg);
+    }
+    .container:hover .cuadrado.b {
+      transform: rotateX(-90deg);
+    }
+    .container:hover .cuadrado.c {
+      transform: rotateY(-90deg);
+    }
+    .container:hover .cuadrado.d {
+      transform: rotateZ(45deg);
+    }
+    .container:hover .cuadrado.e {
+      transform: rotateX(-90deg) rotateY(-90deg) rotateZ(-90deg);
+    }
+    .container:hover .cuadrado.f {
+      transform: rotate3d(1, 1, 0, -90deg);
+    }
+    .cuadrado  {
+      width: 100px;
+      height: 100px;
+      background: #7dc900;
+      margin: 20px;
+      transition: .3s;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pasa el cursor</h1>
+  <div class="container">
+    <div class="cuadrado a">
+      Rotate 45deg
+    </div>
+    <div class="cuadrado b">
+      Rotate ejeX -90deg
+    </div>
+    <div class="cuadrado c">
+        Rotate ejeY -90deg
+    </div>
+    <div class="cuadrado d">
+        Rotate ejeZ -45deg
+    </div>
+    <div class="cuadrado e">
+        Rotate ejeXYZ -90deg
+    </div>
+    <div class="cuadrado f">
+        Rotate 3d -90deg
+    </div>
+  </div>
+</body>
+</html>
