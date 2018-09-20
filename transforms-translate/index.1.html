@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Transform Translate</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      font-family: Arial;
+      perspective: 400px;
+      perspective-origin: center;
+    }
+    .container {
+      border: 1px solid red;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: 1s ease;
+      transform-style: preserve-3d; /* Para firefox*/
+    }
+    .container:hover .cuadrado.a {
+      transform: translate(100px);
+    }
+    .container:hover .cuadrado.b {
+      transform: translate(100px, 100px);
+    }
+    .container:hover .cuadrado.c {
+      transform: translateY(-100px);
+    }
+    .container:hover .cuadrado.d {
+      transform: translateZ(-100px);
+    }
+    .container:hover .cuadrado.e {
+      transform: translate3d(-100px, -100px, 100px);
+    }
+    .cuadrado  {
+      width: 100px;
+      height: 100px;
+      background: #7dc900;
+      margin: 20px;
+      transition: .3s;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pasa el cursor</h1>
+  <div class="container">
+    <div class="cuadrado a">
+      Translate 100px right
+    </div>
+    <div class="cuadrado b">
+      Translate X e Y
+    </div>
+    <div class="cuadrado c">
+        Translate Y desde bottom
+    </div>
+    <div class="cuadrado d">
+        Translate Z desde bottom
+    </div>
+    <div class="cuadrado e">
+        Translate 3D
+    </div>
+  </div>
+</body>
+</html>

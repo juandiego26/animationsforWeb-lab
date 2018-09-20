@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Transform Rotate</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      font-family: Arial;
+      perspective: 200px; /* perspectiva para los elementos 3D*/
+      perspective-origin: center; /* origen de la perspectiva*/
+      /* perspective-origin: x, y; */
+      /* perspective-origin: top; /* desde arriba*/
+      /* perspective-origin: bottom; /* desde abajo*/
+      /* perspective-origin: left; /* hacia la izquierda*/
+      /* perspective-origin: right; /* Hacia la derecha*/
+      /* perspective-origin: top right; */
+      /* perspective-origin: top left; */
+      /* perspective-origin: bottom left; */
+      /* perspective-origin: bottom right; */
+    }
+    .container {
+      border: 1px solid red;
+      transform-style: preserve-3d; /* Para firefox*/
+    }
+    /* .cuadrado:hover { */
+    .container:hover .cuadrado {
+      /*transform: translate(100px); /* Mover a la derecha en el ejex*/
+      /*transform: translate(-100px); /* Mover a la izquieda en el eje y*/
+      /*transform: translate(100px, 100px); /* Mover a la derecha en el eje x and y*/
+      /*transform: translate(-100px, -100px); /* Mover a la izquierda en el eje x and y*/
+      /*transform: translateX(100px); /* Mover a la derecha en el eje x con un parámetro o -100px para el otro lado*/
+      /*transform: translateY(100px); /* Mover a la derecha en el eje y con un parámetro o -100px para el otro lado*/
+      /*transform: translateZ(100px); /* Mover a la derecha en el eje z profundidad con un parámetro o -100px para el otro lado*/
+      /*transform: translate3d(x,y,z); /* Mover persectiva 3d profundidad */
+      /*transform: translate3d(100px, 100px, 100px); /* Mover persectiva 3d profundidad */
+      transform: translate3d(-100px, -100px, -100px); /* Mover persectiva 3d profundidad */
+    }
+    .cuadrado {
+      width: 200px;
+      height: 200px;
+      background: #7dc900;
+      margin: 20px;
+      transition: .3s;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="cuadrado">
+      Hola Mundo!
+    </div>
+  </div>
+</body>
+</html>

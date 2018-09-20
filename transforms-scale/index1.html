@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Transform Rotate</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      font-family: Arial;
+      perspective: 400px;
+      perspective-origin: center;
+    }
+    .container {
+      border: 1px solid red;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: 1s ease;
+    }
+    .container:hover .cuadrado.a {
+      transform: scale(1.5);
+    }
+    .container:hover .cuadrado.b {
+      transform: scale(0.7);
+    }
+    .container:hover .cuadrado.c {
+      transform: scale(1.5, 0.7);
+    }
+    .cuadrado {
+      width: 200px;
+      height: 200px;
+      background: #7dc900;
+      margin: 20px;
+      transition: .3s;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="cuadrado a">
+      Hola Mundo!
+    </div>
+    <div class="cuadrado b">
+      Hola Mundo!
+    </div>
+    <div class="cuadrado c">
+      Hola Mundo!
+    </div>
+  </div>
+</body>
+</html>
