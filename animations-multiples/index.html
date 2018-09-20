@@ -29,11 +29,11 @@
       margin: 20px;
       border-radius: 50%;
       /* transition: .3s; */
-      animation-name: cuadrado; /* Para ponerle un nombre a la amimación*/
       display: flex;
       align-items: center;
       justify-content: center;
-      animation-duration: 2s; /* Duracion de la animación*/
+      animation-name: cuadrado, rebote; /* Para ponerle un nombre a la amimación*/
+      animation-duration: 3s, .3s; /* Duracion de la animación*/
       /* animation-delay: 1s; */
       /* animation-iteration-count: 2; */ /* Anima dos veces*/
       animation-iteration-count: infinite; /* Anima infinitamente*/
@@ -48,7 +48,7 @@
       pueda ser fluida a nuestro gusto*/
 
       /* animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
-      animation-timing-function: cubic-bezier(.75, -0.31, .33, 1.4);
+      /* animation-timing-function: cubic-bezier(.75, -0.31, .33, 1.4); */
 
       /****   Por defecto y dentro de CSS hace que haya una animación por defecto un ease por defecto
       y esto se puede cambiar con animation-timing-function *****/
@@ -59,6 +59,7 @@
       /*animation-timing-function: ease-in-out; /* Aceleración lenta tanto al inicio como al final perfecta para un pendulo*/
       /* animation-timing-function: linear; /* Efecto son aceleración a un ritmo constante */
       /* animation-timing-function: steps(5); /*Animacióm con 60 frames por segundo 60 pasos por segundo dependiendo de la velocidad de animación*/
+      animation-timing-function: linear, ease-in-out;
       position: relative;
     }
     @keyframes cuadrado { /*para configurar mi animación que vamos a hacer en un 1s que se llame cuadrado https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes*/
@@ -69,6 +70,16 @@
       100% { /*Estado final*/
         /* opacity: 0; */
         left: calc(100% - 240px); /* Con la margen y el ancho*/
+      }
+    }
+    @keyframes rebote {
+      /* 0% { */
+      from {
+        transform: translateY(0);
+      }
+      /* 100% { */
+      to {
+        transform: translateY(100px) scale(1, .8);
       }
     }
   </style>
