@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Transitions CSS</title>
+  <style>
+    body {
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+    .pelota {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%; /*Para que sea totalmente circular */
+      /* background-color: red; */
+      /* transition-property: width, height; /*Que propiedad quiero modificar*/
+      /* transition-duration: 1s; /* Cuanto va a durar las transición */
+      /* transition-delay: 1s; /* tiempo que espera para iniciar la transición */
+      /* transition-timing-function: ease; /*una propiedad de aceleración*/
+      transition: 1s ease; /* transition: porperty | duration | delay | timing-function ;*/
+      /*  https://developer.mozilla.org/en-US/docs/Web/CSS/transition */
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+    .pelota.a {
+      background: red;
+      left: 0;
+    }
+    .pelota.b {
+      background: blue;
+      right: 0;
+    }
+    .canasta {
+      border: 1px solid red;
+      position: relative;
+      height: 100px;
+      width: 100%;
+      /* transform: rotar | sesgar | position | tamaño */
+      transform: rotate(5deg) skew(10deg) translate(100px) scale(1.5);
+    }
+    .canasta:hover .pelota.a {
+      left: calc(50% - 100px);
+      /* left: 50%; */
+    }
+    .canasta:hover .pelota.b {
+      right: calc(50% - 100px);
+      /* right: 50%; */
+    }
+  </style>
+</head>
+<body>
+  <div class="canasta">
+    <div class="pelota a">Hola</div>
+    <div class="pelota b">Mundo!</div>
+  </div>
+</body>
+</html>
