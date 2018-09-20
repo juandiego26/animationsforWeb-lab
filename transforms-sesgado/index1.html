@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Transform Skew</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      font-family: Arial;
+      perspective: 400px;
+      perspective-origin: center;
+    }
+    .container {
+      border: 1px solid red;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: 1s ease;
+    }
+    .container:hover .cuadrado.a {
+      transform: skew(45deg);
+    }
+    .container:hover .cuadrado.b {
+      transform: skew(0, 45deg);
+    }
+    .container:hover .cuadrado.c {
+      transform: skew(44deg, 44deg);
+    }
+    .cuadrado {
+      width: 200px;
+      height: 200px;
+      background: #7dc900;
+      margin: 20px;
+      transition: .3s;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="cuadrado a">
+      Sesgado a 45deg
+    </div>
+    <div class="cuadrado b">
+      sesgado XY
+    </div>
+    <div class="cuadrado c">
+      sesgado XY 44deg
+    </div>
+  </div>
+</body>
+</html>
