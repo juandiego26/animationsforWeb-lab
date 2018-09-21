@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Animations will-change</title>
+  <style>
+    body {
+      display: flex;
+      /* align-items: center; */
+      align-items: flex-start;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      font-family: Arial;
+    }
+    .container {
+      border: 1px solid red;
+      width: 100%;
+    }
+    /* .cuadrado:hover { */
+    .container:hover .cuadrado {
+      animation-play-state: paused; /* Pausar la amimación */
+    }
+    .cuadrado {
+      width: 200px;
+      height: 200px;
+      background: red;
+      margin: 20px;
+      border-radius: 50%;
+      /* transition: .3s; */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /*animation-name: cuadrado, rebote; /* rebote; /* Para ponerle un nombre a la amimación*/
+      /*animation-duration: 3s, .3s; /* Duracion de la animación*/
+      /* animation-delay: 1s; */
+      /* animation-iteration-count: 2; */ /* Anima dos veces*/
+      animation-iteration-count: infinite, 20; /* Anima infinitamente*/
+      animation-timing-function: ease;
+      /* animation-direction: reverse; */ /* Animacion en reversa */
+      animation-direction: alternate; /* Para que rebote */
+      /* animation-fill-mode: forwards; /* Para rellenar la aimación*/
+      /* animation-play-state: running; */
+      /* animation-play-state: paused; */
+
+      /*Curva de bezier: para configurar que la acelación de la animación
+      pueda ser fluida a nuestro gusto*/
+
+      /* animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
+      /* animation-timing-function: cubic-bezier(.75, -0.31, .33, 1.4); */
+
+      /****   Por defecto y dentro de CSS hace que haya una animación por defecto un ease por defecto
+      y esto se puede cambiar con animation-timing-function *****/
+
+      /* animation-timing-function: ease; */ /* configuración por defecto para la aceleración*/
+      /* animation-timing-function: ease-in; /* Hace que nuestras animaciones tengan una aceleración más suave al inicio*/
+      /* animation-timing-function: ease-out; /* Hace la aimimacíon con una aceleración lenta al final*/
+      /*animation-timing-function: ease-in-out; /* Aceleración lenta tanto al inicio como al final perfecta para un pendulo*/
+      /* animation-timing-function: linear; /* Efecto son aceleración a un ritmo constante */
+      /* animation-timing-function: steps(5); /*Animacióm con 60 frames por segundo 60 pasos por segundo dependiendo de la velocidad de animación*/
+      animation-timing-function: linear, ease-in-out;
+      position: relative;
+      transition: 3s;
+      will-change: opacity;
+    }
+    .cuadrado:hover {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+    @keyframes cuadrado { /*para configurar mi animación que vamos a hacer en un 1s que se llame cuadrado https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes*/
+      0% { /* Estado inicial*/
+        /* opacity: 1; */
+        left: 0;
+      }
+      100% { /*Estado final*/
+        /* opacity: 0; */
+        left: calc(100% - 240px); /* Con la margen y el ancho*/
+      }
+    }
+    @keyframes escalera {
+      from {
+        transform: translateY(0)
+      }
+      to {
+        transform: translateY(500px)
+      }
+    }
+    @keyframes rebote {
+      /* 0% { */
+      from {
+        transform: translateY(0);
+      }
+      /* 100% { */
+      to {
+        transform: translateY(100px) scale(1, .8);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="cuadrado" id="cuadrado">
+      Hola Mundo!
+    </div>
+  </div>
+  <script>
+    const $cuadrado = document.getElementById('cuadrado')
+    // $cuadrado.addEventListener('que debo hacer', 'que hago cuando el evento ocurra')
+    // $cuadrado.addEventListener('animationstart', (event) => {
+    // $cuadrado.addEventListener('animationiteration', (event) => {
+    $cuadrado.addEventListener('animationend', (event) => {
+      console.log(event.animationName)
+      if(event.animationName === 'rebote') {
+        $cuadrado.style.animationName = 'cuadrado escalera'
+        $cuadrado.style.animationDuration = '3s'
+      }
+    })
+  </script>
+</body>
+</html>

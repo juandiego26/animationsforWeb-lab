@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  body{
+      background: black;
+    }
+    .container{
+      width: 650px;
+      height: 400px;
+      margin: 100px auto;
+      perspective: 100px;
+    }
+    .barra{
+      width: 50px;
+      height: 350px;
+      display: inline-block;
+      margin-left: 50px;
+      transition: 1s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: 1;
+      animation-duration: 3s;
+    }
+
+    .barra.a{
+      background: black;
+      border: 1px solid white;
+      animation-name: barra_a;
+
+    }
+
+    .barra.b{
+      background: black;
+      border: 1px solid orange;
+      animation-name: barra_b;
+    }
+
+    @keyframes barra_a{
+      from{ transform: translateZ(0px);  z-index: 3;}
+
+      17%{ transform: translateZ(10px);  z-index: 3;}
+
+      33%{ transform: translateZ(10px) translateX(100px); z-index: 3; }
+
+      50%{ transform: translateZ(0px) translateX(100px);  z-index: 1;}
+
+      67%{ transform: translateZ(0px) translateX(100px);  z-index: 1; }
+
+      83%{ transform: translateZ(0px) translateX(0px); z-index: 1;}
+
+      to{ transform: translateZ(0px) translateX(0px); z-index: 1;}
+
+    }
+    @keyframes barra_b{
+      from{  transform: translateZ(0px); z-index: 1;}
+
+      17%{ transform: translateZ(0px); z-index: 1;}
+
+      33%{ transform: translateZ(0px) translateX(-100px); z-index: 1;}
+
+      50%{ transform: translateZ(0px) translateX(-100px); z-index: 1;}
+
+      67%{ transform: translateZ(10px) translateX(-100px); z-index: 3;}
+
+      83%{ transform: translateZ(10px) translateX(0px); z-index: 3;}
+
+      to{ transform: translateZ(0px) translateX(0px); z-index: 1;}
+    }
+
+    @keyframes pelota{
+      from{
+        width: 50px;
+        height: 350px;
+        border-radius: 0;
+      }
+      to{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+
+      }
+    }
+
+    @keyframes caida{
+
+      from{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        transform: translateY(0);
+      }
+      to{
+
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        transform: translateY(300px);
+      }
+    }
+
+
+    @keyframes rebotar{
+
+      from{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        transform: translateY(300px) scale(1.1, 0.9);;
+
+      }
+      to{
+
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        transform: translateY(0) scale(1);
+
+      }
+    }
+
+    @keyframes mover{
+      from{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        transform: translateY(300px);
+      }
+      to{
+
+        width: 50px;
+        height: 350px;
+        border-radius: 0;
+        transform: translateY(0);
+      }
+    }
+</style>
+<body>
+  <div class="container">
+    <div id="barra1" class="barra a"></div>
+    <div id="barra2" class="barra b"></div>
+    <div id="barra3" class="barra a"></div>
+    <div id="barra4" class="barra b"></div>
+    <div id="barra5" class="barra a"></div>
+    <div id="barra6" class="barra b"></div>
+  </div>
+  <script>
+    var barra1 = document.getElementById('barra1')
+    var barra2 = document.getElementById('barra2')
+    var barra3 = document.getElementById('barra3')
+    var barra4 = document.getElementById('barra4')
+    var barra5 = document.getElementById('barra5')
+    var barra6 = document.getElementById('barra6')
+
+    barra1.addEventListener('animationend', function(event){
+
+      console.log(event)
+      var ev = event.animationName
+
+      if(ev ==='barra_a' ){
+
+        barra1.style.animationName = 'pelota'
+        barra1.style.animationDuration = '0.3s';
+        barra1.style.animationIterationCount = 1;
+        barra1.style.animationFillMode = 'forwards'
+
+        barra2.style.animationName = 'pelota'
+        barra2.style.animationDuration = '0.3s';
+        barra2.style.animationIterationCount = 1;
+        barra2.style.animationFillMode = 'forwards'
+
+        barra3.style.animationName = 'pelota'
+        barra3.style.animationDuration = '0.3s';
+        barra3.style.animationIterationCount = 1;
+        barra3.style.animationFillMode = 'forwards'
+
+        barra4.style.animationName = 'pelota'
+        barra4.style.animationDuration = '0.3s';
+        barra4.style.animationIterationCount = 1;
+        barra4.style.animationFillMode = 'forwards'
+
+        barra5.style.animationName = 'pelota'
+        barra5.style.animationDuration = '0.3s';
+        barra5.style.animationIterationCount = 1;
+        barra5.style.animationFillMode = 'forwards'
+
+        barra6.style.animationName = 'pelota'
+        barra6.style.animationDuration = '0.3s';
+        barra6.style.animationIterationCount = 1;
+        barra6.style.animationFillMode = 'forwards'
+      }
+
+      else if(ev ==="pelota"){
+
+        barra1.style.animationName = 'caida';
+        barra1.style.animationDuration = '0.3s';
+        barra1.style.animationIterationCount = 1;
+        barra1.style.animationFillMode = 'forwards';
+
+        barra2.style.animationName = 'caida';
+        barra2.style.animationDuration = '0.3s';
+        barra2.style.animationIterationCount = 1;
+        barra2.style.animationFillMode = 'forwards';
+
+        barra3.style.animationName = 'caida';
+        barra3.style.animationDuration = '0.3s';
+        barra3.style.animationIterationCount = 1;
+        barra3.style.animationFillMode = 'forwards';
+
+        barra4.style.animationName = 'caida';
+        barra4.style.animationDuration = '0.3s';
+        barra4.style.animationIterationCount = 1;
+        barra4.style.animationFillMode = 'forwards';
+
+        barra5.style.animationName = 'caida';
+        barra5.style.animationDuration = '0.3s';
+        barra5.style.animationIterationCount = 1;
+        barra5.style.animationFillMode = 'forwards';
+
+        barra6.style.animationName = 'caida';
+        barra6.style.animationDuration = '0.3s';
+        barra6.style.animationIterationCount = 1;
+        barra6.style.animationFillMode = 'forwards';
+      }
+
+      else if(ev ==="caida"){
+
+        barra1.style.animationName = 'rebotar';
+        barra1.style.animationDuration = '.4s';
+        barra1.style.animationIterationCount = '10';
+        barra1.style.animationDirection = 'alternate';
+        barra1.style.animationTimingFunction = 'ease-out';
+
+        barra2.style.animationName = 'rebotar';
+        barra2.style.animationDuration = '.4s';
+        barra2.style.animationIterationCount = '10';
+        barra2.style.animationDirection = 'alternate';
+        barra2.style.animationTimingFunction = 'ease-out';
+
+        barra3.style.animationName = 'rebotar';
+        barra3.style.animationDuration = '.4s';
+        barra3.style.animationIterationCount = '10';
+        barra3.style.animationDirection = 'alternate';
+        barra3.style.animationTimingFunction = 'ease-out';
+
+        barra4.style.animationName = 'rebotar';
+        barra4.style.animationDuration = '.4s';
+        barra4.style.animationIterationCount = '10';
+        barra4.style.animationDirection = 'alternate';
+        barra4.style.animationTimingFunction = 'ease-out';
+
+        barra5.style.animationName = 'rebotar';
+        barra5.style.animationDuration = '.4s';
+        barra5.style.animationIterationCount = '10';
+        barra5.style.animationDirection = 'alternate';
+        barra5.style.animationTimingFunction = 'ease-out';
+
+        barra6.style.animationName = 'rebotar';
+        barra6.style.animationDuration = '.4s';
+        barra6.style.animationIterationCount = '10';
+        barra6.style.animationDirection = 'alternate';
+        barra6.style.animationTimingFunction = 'ease-out';
+      }
+
+      else if(ev ==="rebotar"){
+
+        barra1.style.animationName = 'mover';
+        barra1.style.animationDuration = '.5s';
+        barra1.style.animationIterationCount = 1;
+        barra1.style.animationTimingFunction = 'ease-in-out';
+
+        barra2.style.animationName = 'mover';
+        barra2.style.animationDuration = '.5s';
+        barra2.style.animationIterationCount = 1;
+        barra2.style.animationTimingFunction = 'ease-in-out';
+
+        barra3.style.animationName = 'mover';
+        barra3.style.animationDuration = '.5s';
+        barra3.style.animationIterationCount = 1;
+        barra3.style.animationTimingFunction = 'ease-in-out';
+
+        barra4.style.animationName = 'mover';
+        barra4.style.animationDuration = '.5s';
+        barra4.style.animationIterationCount = 1;
+        barra4.style.animationTimingFunction = 'ease-in-out';
+
+        barra5.style.animationName = 'mover';
+        barra5.style.animationDuration = '.5s';
+        barra5.style.animationIterationCount = 1;
+        barra5.style.animationTimingFunction = 'ease-in-out';
+
+        barra6.style.animationName = 'mover';
+        barra6.style.animationDuration = '.5s';
+        barra6.style.animationIterationCount = 1;
+        barra6.style.animationTimingFunction = 'ease-in-out';
+      }
+
+      else if(ev ==="mover"){
+
+        barra1.style.animationName = 'barra_a';
+        barra1.style.animationDuration = '3s';
+        barra1.style.animationIterationCount = 1;
+        barra1.style.animationTimingFunction = 'ease-in-out';
+
+        barra2.style.animationName = 'barra_b';
+        barra2.style.animationDuration = '3s';
+        barra2.style.animationIterationCount = 1;
+        barra2.style.animationTimingFunction = 'ease-in-out';
+
+        barra3.style.animationName = 'barra_a';
+        barra3.style.animationDuration = '3s';
+        barra3.style.animationIterationCount = 1;
+        barra3.style.animationTimingFunction = 'ease-in-out';
+
+        barra4.style.animationName = 'barra_b';
+        barra4.style.animationDuration = '3s';
+        barra4.style.animationIterationCount = 1;
+        barra4.style.animationTimingFunction = 'ease-in-out';
+
+        barra5.style.animationName = 'barra_a';
+        barra5.style.animationDuration = '3s';
+        barra5.style.animationIterationCount = 1;
+        barra5.style.animationTimingFunction = 'ease-in-out';
+
+        barra6.style.animationName = 'barra_b';
+        barra6.style.animationDuration = '3s';
+        barra6.style.animationIterationCount = 1;
+        barra6.style.animationTimingFunction = 'ease-in-out';
+      }
+    })
+  </script>
+</body>
+</html>
