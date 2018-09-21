@@ -8,7 +8,8 @@
   <style>
     body {
       display: flex;
-      align-items: center;
+      /* align-items: center; */
+      align-items: flex-start;
       justify-content: center;
       height: 100vh;
       color: white;
@@ -32,11 +33,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      animation-name: cuadrado, rebote; /* Para ponerle un nombre a la amimación*/
+      animation-name: cuadrado, rebote; /* rebote; /* Para ponerle un nombre a la amimación*/
       animation-duration: 3s, .3s; /* Duracion de la animación*/
       /* animation-delay: 1s; */
       /* animation-iteration-count: 2; */ /* Anima dos veces*/
-      animation-iteration-count: infinite; /* Anima infinitamente*/
+      animation-iteration-count: infinite, 20; /* Anima infinitamente*/
       animation-timing-function: ease;
       /* animation-direction: reverse; */ /* Animacion en reversa */
       animation-direction: alternate; /* Para que rebote */
@@ -72,6 +73,14 @@
         left: calc(100% - 240px); /* Con la margen y el ancho*/
       }
     }
+    @keyframes escalera {
+      from {
+        transform: translateY(0)
+      }
+      to {
+        transform: translateY(500px)
+      }
+    }
     @keyframes rebote {
       /* 0% { */
       from {
@@ -86,9 +95,22 @@
 </head>
 <body>
   <div class="container">
-    <div class="cuadrado">
+    <div class="cuadrado" id="cuadrado">
       Hola Mundo!
     </div>
   </div>
+  <script>
+    const $cuadrado = document.getElementById('cuadrado')
+    // $cuadrado.addEventListener('que debo hacer', 'que hago cuando el evento ocurra')
+    // $cuadrado.addEventListener('animationstart', (event) => {
+    // $cuadrado.addEventListener('animationiteration', (event) => {
+    $cuadrado.addEventListener('animationend', (event) => {
+      console.log(event.animationName)
+      if(event.animationName === 'rebote') {
+        $cuadrado.style.animationName = 'cuadrado escalera'
+        $cuadrado.style.animationDuration = '3s'
+      }
+    })
+  </script>
 </body>
 </html>

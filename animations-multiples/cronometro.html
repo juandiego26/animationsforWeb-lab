@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reloj con animaciones</title>
+  <style>
+    *, *::after, *::before{
+      margin: 0;
+      padding: 0;
+      border: 0;
+      box-sizing: border-box;
+      font-size: 64px;
+      font-family: Arial Black;
+    }
+
+    body{
+      height: 100vh;
+      background: #714141;
+    }
+
+    body, .clock, .number{
+    display: flex;
+    align-items: center;
+			justify-content: center;
+		}
+
+		.clock{
+			border-radius: 50%;
+			border: 5px solid #E95E5E;
+			width: 150px;
+			height: 150px;
+			position: relative;
+		}
+
+		.clock::after{
+			display: block;
+			content: ' ';
+			border-radius: 50%;
+			border: 5px solid #E95E5E;
+			width: 135px;
+			height: 135px;
+		}
+
+		.line{
+			background: #E95E5E;
+			display: block;
+			content: ' ';
+			width: 5px;
+			height: 150px;
+			position: absolute;
+			animation-name: rotate;
+			animation-duration: 1s;
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+		}
+
+		.number{
+			position: absolute;
+			color: #fff;
+			width: 150px;
+			height: 150px;
+			z-index: 2;
+		}
+
+		@keyframes rotate{
+			from {transform: rotate(0)}
+			to{transform: rotate(360deg)}
+		}
+	</style>
+</head>
+<body>
+	<div class="clock">
+		<div class="number"id="number">
+			1
+		</div>
+		<div class="line"id="line"></div>
+	</div>
+	<script>
+		$line = document.getElementById("line");
+		$number = document.getElementById("number");
+		$count = parseInt($number.innerHTML);
+		$line.addEventListener("animationiteration", () => {
+			$number.innerHTML = $count + 1;
+			$count = parseInt($number.innerHTML);
+		})
+	</script>
+</body>
+
+</html>
