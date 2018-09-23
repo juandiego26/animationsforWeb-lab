@@ -1,0 +1,188 @@
+/******************************
+ESTILOS CONTENIDO: index_cont.css;
+*******************************/
+#index_cont {
+	& .contenedor {
+		background-color: #1b2a3a;
+		display: flex;
+		justify-content: center;
+		height: 89vh;
+		width: 100%;
+		position: fixed;
+		overflow: hidden;
+	}
+
+	& #asteroide {
+		bottom: -81%;
+		position: absolute;
+		z-index: 5;
+
+		@media (--mobile-s) {
+			bottom: -70%;
+			width: 50rem;		  
+		}
+		@media (--mobile-x) {
+			bottom: -70%;
+			width: 60rem;		  
+		}
+		@media (--tablet-h) {
+		  bottom: -96%;
+			width: 71rem;
+		}
+		@media (--laptop-s) {
+		  bottom: -92%;
+			width: 75rem;
+		}
+		@media (--laptop-x) {
+		  bottom: -92%;
+			width: 79rem;
+		}
+	}
+	& #cohete {
+		animation-duration: 5s;
+		animation-fill-mode: forwards;
+		animation-name: cohete;
+		height: 25rem;
+		left: 50%;
+		position: absolute;
+		transform: translateX(-50%);
+		width: 13rem;
+		z-index: 7;
+
+		& #cohete-cont {
+			position: relative;
+
+			#compuerta {
+				animation: 3s compuerta;
+				animation-delay: 7s;
+				animation-fill-mode: forwards;
+				left: 50%;
+				position: absolute;
+				transform: translateX(-50%);
+				top: 17rem;
+				width: 0;
+				z-index: 8;
+			}
+
+			& #astronauta {
+				animation-name: astronauta;
+				animation-duration: 9.5s;
+				animation-delay: 12s;
+				animation-timing-function: steps(19);
+				animation-fill-mode: forwards;
+				background-image: url('../img/astronauta.svg');
+				background-size: cover;
+				height: 3rem;
+				width: 3rem;
+				left: 50%;
+				transform: translateX(-50%);
+				opacity: 0;
+				position: absolute;
+				top: 17rem;
+				z-index: 10;
+			}
+			& #escalera {
+				animation: 3s escalera;
+				animation-delay: 10s;
+				animation-fill-mode: forwards;
+				background-image: url('../img/bg-escalera.svg');
+				height: 0rem;
+				width: 2.6rem;
+				left: 50%;
+				transform: translateX(-50%);
+				position: absolute;
+				top: 20rem;
+				z-index: 9;
+			}
+			& #nave {
+				height: 25rem;
+				width: auto;
+				position: absolute;
+				z-index: 7;			
+			}
+
+			& #llama {
+				animation: 5s llama;
+				animation-fill-mode: forwards;
+				bottom: -26.5rem;
+				left: 50%;
+				transform: translateX(-50%);			
+				height: auto;
+				width: 2.7rem;
+				position: absolute;
+				z-index: 6;
+			}			
+		}
+	}
+
+	& #cometa {
+		animation-name: cometa;
+		animation-delay: 27s;
+		animation-duration: 1.5s;
+		animation-fill-mode: forwards;
+		animation-iteration-count: 1;
+		animation-timing-function: linear;
+		top: -5rem;
+		left: -5rem;
+		position: absolute;
+		z-index: 3;
+	}		
+
+	& .estrellas {
+		animation: 1s estrellas infinite;
+		height: 85vh;
+		position: absolute;
+		width: auto;
+		z-index: 1;
+
+		&.b {
+			animation-delay: .6s;
+		}
+	}
+
+	& #planeta {
+		animation: 180s movimiento2 linear;
+		animation-fill-mode: forwards;
+		height: 85rem;
+		width: auto;
+		position: absolute;
+		z-index: 2;
+
+		
+		@media (--mobile-x) {
+		  height: 50rem;
+		}
+		@media (--tablet-h) {
+		  height: 65rem;
+		}
+		@media (--laptop-s) {
+		  height: 65rem;
+		}
+		@media (--laptop-x) {
+		  height: 75rem;
+		}
+	}
+
+	& #satelite {
+		animation: 40s movimiento1 infinite linear;
+		position: absolute;
+		z-index: 3;
+
+		& img {
+			height: auto;
+			width: 10rem;
+		}
+	}
+
+	.superh1 {
+		animation-name: superh1;
+		animation-direction: alternate;
+		animation-duration: 60s;
+		animation-iteration-count: infinite;
+		color: var(--white-color);
+		font-size: responsive 5rem 10rem;
+		margin-top: 5vh;
+	}
+}
+
+/* /.ESTILOS CONTENIDO */

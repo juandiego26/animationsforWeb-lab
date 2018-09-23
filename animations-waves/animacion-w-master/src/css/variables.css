@@ -1,0 +1,13 @@
+:root{
+--dark-color: #222222;
+--gray-ligth-color: #cacaca;
+--ligth-color: #7fceff;
+--primary-color: #62b2e5;
+--secondary-color:  #FF853E;
+--terciary-color: #7dc900;
+--text-color: #444;
+--white-color: #f1f1f1;
+--tra35: all .35s ease;
+--tra50: all .5s ease;
+--tra100: all 1s ease;
+}

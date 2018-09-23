@@ -1,0 +1,46 @@
+/******************************
+ESTILOS FOOTER: footer.css;
+*******************************/
+#footer {
+	background: var(--gray-ligth-color);
+	bottom: 0;
+	padding: 1rem 0 .5rem 0;
+	position: fixed;
+	width: 100%;
+	line-height: 1;
+
+	& a {
+		text-decoration: none;
+	}
+
+	& .autor {
+		font-size: responsive 1rem 1.5rem;
+		font-family: 'ubuntu_reg', sans-serif;
+	}
+
+	& #footer-social {
+			display: flex;
+			justify-content: center;
+
+		& .iconos {
+			border-radius: 50%;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 3.7rem;
+			margin: 1rem;
+			transition: 2s;
+			width: 3.7rem;
+
+			&:hover {
+				background-color: var(--secondary-color);
+				color: var(--white-color);
+				transform: rotate(1turn);
+				transition: 2s;
+			}
+		}
+	}	
+}
+
+/* /.ESTILOS FOOTER */

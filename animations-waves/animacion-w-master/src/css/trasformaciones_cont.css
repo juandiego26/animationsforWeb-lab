@@ -1,0 +1,337 @@
+/******************************
+ESTILOS CONTENIDO TRANSFORMACIONES: trasformaciones_cont.css;
+*******************************/
+#trasformaciones_cont {
+	padding: 3rem 0 12rem 0;	
+
+	& #rotate{
+		padding-top: 3rem;
+
+		& .cuadro-cont {
+			border: solid 1px var(--secondary-color);
+			width: 24rem;
+
+			&:hover .cuadro {
+				transform: rotate(45deg);
+				transition:.4s;
+
+				&.inverso {
+					transform: rotate(-45deg);
+				}
+			}
+
+			& .cuadro {
+				background-color: var(--terciary-color);
+				color: var(--white-color);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin: 2rem;
+				height: 20rem;
+				width: 20rem;
+				transition:.4s;
+			}
+		}
+
+		& .cont-img {
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			&:hover .imagen.x {
+				transform: rotateX(180deg);
+				transition: 1.5s;
+			}
+			&:hover .imagen.y {
+				transform: rotateY(180deg);
+				transition: 1.5s;
+			}
+			&:hover .imagen.z {
+				transform: rotateZ(8turn);
+				transition: 10s;
+			}
+			&:hover .imagen.xz {
+				transform: rotateX(45deg) rotateZ(45deg);
+				transition: 1.5s;
+			}
+			&:hover .imagen.yz {
+				transform: rotateY(45deg) rotateZ(45deg);
+				transition: 1.5s;
+			}
+			&:hover .imagen.td {
+				transform: rotate3d(1, 1, 1, -45deg);
+				transition: 1.5s;
+			}
+			&:hover .imagen.td.b {
+				transform: rotate3d(1, 0, 1, 60deg);
+				transition: 1.5s;
+			}
+
+			& .imagen {
+				height: auto;
+				max-width: 12rem;
+				transition: .5s;
+				width: 100%;
+			}
+		}
+	}
+
+	& #translate {
+		padding-top: 3rem;
+
+		& .circulo-cont {
+			border: solid 1px var(--secondary-color);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 15rem;
+			width: 15rem;
+			perspective: 30rem;
+	  	perspective-origin: top center;
+
+			&:hover .circulo.a {
+				transform: translate(10rem);
+				transition: 1.5s;
+			}
+			&:hover .circulo.ab {
+				transform: translate(10rem, 10rem);
+				transition: 1.5s;
+			}
+			&:hover .circulo.x {
+				transform: translateX(10rem);
+				transition: 1.5s;
+			}
+			&:hover .circulo.y {
+				transform: translateY(-10rem);
+				transition: 1.5s;
+			}
+			&:hover .circulo.z {
+				transform: translateZ(8rem);
+				transition: 1.5s;
+			}
+			&:hover .circulo.td {
+				transform: translate3d(3rem,3rem,3rem);
+				transition: 1.5s;
+			}
+			&:hover .circulo.td.b {
+				transform: translate3d(-3rem,-3rem,3rem);
+				transition: 1.5s;
+			}
+
+			& .circulo {
+				background: var(--primary-color);
+				border-radius: 50%;
+				color: var(--white-color);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 98%;
+				width: 98%;
+				max-height: 14rem; 
+				max-width: 14rem;
+				transition: .5s;
+			}
+		}
+	}
+
+	& #escala {
+		padding-top: 3rem;
+
+		& .circulo-cont {
+			border: solid 1px var(--secondary-color);
+			border-radius: 25%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 15rem;
+			width: 15rem;
+
+			&:hover .circulo.a {
+				transform: scale(1.14);
+				transition: 1.5s;
+			}
+			&:hover .circulo.ab {
+				transform: scale(1.14,.9);
+				transition: 1.5s;
+			}
+			&:hover .circulo.x {
+				transform: scaleX(1.5);
+				transition: 1.5s;
+			}
+			&:hover .circulo.y {
+				transform: scaleY(1.5);
+				transition: 1.5s;
+			}
+			&:hover .circulo.z {
+				transform: perspective(10rem) translateZ(-2.5rem);
+				transition: 1.5s;
+			}
+			&:hover .circulo.td {
+				transform: perspective(0) scale3d(.5,.5,-1);
+				transition: 1.5s;
+			}
+			&:hover .circulo.td.b {
+				transform: perspective(0) scale3d(2,2,-1);
+				transition: 1.5s;
+			}
+
+			& .circulo {
+				background: var(--terciary-color);
+				border-radius: 25%;
+				color: var(--white-color);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 95%;
+				width: 95%;
+				max-height: 13rem; 
+				max-width: 13rem;
+				transition: .5s;
+			}
+		}
+	}
+
+	& #sesgo{
+		padding-top: 3rem;
+
+		& .cuadro-cont {
+			border: solid 1px var(--primary-color);
+			width: 24rem;
+
+			&:hover .cuadro {
+				transform: skew(10deg);
+				transition:.4s;
+
+				&.inverso {
+					transform: skew(-10deg);
+				}
+			}
+
+			& .cuadro {
+				background-color: var(--secondary-color);
+				color: var(--white-color);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin: 2rem;
+				height: 20rem;
+				width: 20rem;
+				transition:.4s;
+			}
+		}
+
+		& .cont-img {
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			&:hover .imagen.x {
+				transform: skewX(20deg);
+				transition: 1.5s;
+			}
+			&:hover .imagen.y {
+				transform: skewY(20deg);
+				transition: 1.5s;
+			}
+			&:hover .imagen.xy {
+				transform: skewX(-10deg) skewY(-10deg);
+				transition: 1.5s;
+			}
+			&:hover .imagen.t {
+				transform: skew(.05turn);
+				transition: 1.5s;
+			}
+			&:hover .imagen.td {
+				transform: rotate3d(1, 1, 1, -45deg);
+				transition: 1.5s;
+			}
+			&:hover .imagen.td.b {
+				transform: rotate3d(1, 0, 1, 60deg);
+				transition: 1.5s;
+			}
+
+			& .imagen {
+				height: auto;
+				max-width: 12rem;
+				transition: .5s;
+				width: 100%;
+			}
+		}
+	}
+
+	& #punto{
+		padding-top: 3rem;
+
+		& .cuadro-cont {
+			border: solid 1px var(--secondary-color);
+			width: 24rem;
+
+			&:hover .cuadro {
+				transform: rotateZ(45deg);
+				transform-origin: left top;
+				transition:.4s;
+
+				&.inverso {
+					transform: rotate(-45deg);
+				}
+			}
+
+			& .cuadro {
+				background-color: var(--terciary-color);
+				color: var(--white-color);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin: 2rem;
+				height: 20rem;
+				width: 20rem;
+				transition:.4s;
+			}
+		}
+
+		& .cont-img {
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			&:hover .imagen.x {
+				transform: rotateX(180deg);
+				transform-origin: bottom;
+				transition: 1.5s;
+			}
+			&:hover .imagen.y {
+				transform: rotateY(180deg);
+				transform-origin: left;
+				transition: 1.5s;
+			}
+			&:hover .imagen.z1 {
+				transform: rotateZ(4turn);
+				transform-origin: right top;
+				transition: 8s;
+			}
+			&:hover .imagen.z2 {
+				transform: rotateZ(180deg);
+				transform-origin: left top;
+				transition: 1.5s linear;
+			}
+			&:hover .imagen.xz {
+				transform: rotateX(35deg) rotateZ(35deg);
+				transform-origin: right top;
+				transition: 1.5s;
+			}
+			& .imagen {
+				height: auto;
+				max-width: 12rem;
+				transition: .5s;
+				width: 100%;
+			}
+		}
+	}
+
+}
+
+/* /.ESTILOS CONTENIDO TRANSFORMACIONES */

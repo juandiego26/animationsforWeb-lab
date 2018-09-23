@@ -1,0 +1,1344 @@
+<!doctype html>
+<html class="no-js" lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animaciones para la Web</title>
+  <meta name="description" content="Las animaciones CSS3 permiten dinamizar la transición entre un estilo CSS y otro. Las animaciones constan de dos componentes: un estilo que describe la animación CSS y un conjunto de fotogramas que indican su estado inicial y final, así como posibles puntos intermedios en la misma. Este ejercicio busca reforzar a través de la prática estos conocimientos fundamentales.">
+  <link rel="shortcut icon" href="assets/img/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/app.min.css">
+</head>
+
+<body>
+	<!-- /////// Botón para ir al principio -->
+	<a class="hide-for-small-only" href="#inicio">
+	  <i class="fa fa-chevron-circle-up fa-2x ir-arriba"></i>
+	</a>
+	<!-- */Botón para ir al principio -->  
+  <!-- ********** BARRA DE NAVEGACIÓN -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">    
+      <a class="navbar-brand" id="logo-nav" href="index.html">Animaciones</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio <span class="sr-only">Inicio</span></a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="transiciones.html">Transiciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="trasformaciones.html">Transformaciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="animaciones.html">Animaciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="animaciones2.html">Aplicaciones</a>
+          </li>
+        </ul>
+      </div>
+    </div><!-- /.container -->
+  </nav>
+  <!-- /. BARRA DE NAVEGACIÓN -->  
+  <!-- ********** CONTENIDO -->
+  <div id="animaciones_cont">
+  	<div class="container">
+      <h1 class="text-center">Animaciones</h1>
+      <p>Las animaciones CSS3 permiten dinamizar la transición entre un estilo CSS y otro. Las animaciones constan de dos componentes: un estilo que describe la animación CSS y un conjunto de fotogramas que indican su estado inicial y final, así como posibles puntos intermedios en la misma.</p>
+      <p>Las animaciones CSS tienen tres ventajas principales sobre las técnicas tradicionales de animación basada en scripts:</p>
+      <ul>
+        <li>Son muy fácil usar para animaciones sencillas, puedes
+          hacerlo incluso sin tener conocimientos de Javascript.</li>
+        <li>La animación se muestra correctamente, incluso en equipos poco
+          potentes. Animaciones simples realizadas en Javascript pueden verse mal
+          (a menos que estén muy bien echas). El motor de renderizado puede usar
+          técnicas de optimización como el "frame-skipping" u otras tecnicas para
+          manteber que la animación se vea tan suave como sea posible.</li>
+        <li>Al ser el navegador quien controle la secuencia de la animación,
+          permitimos que optimice el rendimiento y eficiencia de la misma, por
+          ejemplo, reduciendo la frecuencia de actualización de la animación
+          ejecutándola en pestañas que no estén visibles.</li>
+      </ul>
+      <!-- *********** NAVEGACION INTERNA -->
+      <ul class="nav nav-tabs justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" href="#sintaxis">Sintaxis de CSS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#bezier">Aceleración y curva de bezier</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#multiples">Animaciones múltiples</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#detectar">Detectar eventos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#propiedades">Propiedades animables</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#element-animate">Javascript element.animate</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#control">Controlar animaciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#logo">Animando un logo</a>
+        </li>
+      </ul>
+      <!-- NAVEGACION INTERNA ************* -->
+
+      <div id="sintaxis">
+        <h2>Sintaxis de CSS</h2>
+        <p>La propiedad <code>animation</code> de CSS es una propiedad abreviada (shorthand property) para <code>animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count </code> y <code> animation-direction</code>.</p>
+        <p>La lista de propiedades CSS que pueden ser animadas son las mismas propiedades soportadas por <code>transitions</code>.</p>        
+        <br>
+        <div class="row">
+          <div class="col-12">         
+            <div class="tarjeta">
+              <div class="circulo-cont">
+                <div class="circulo">
+                  Hola Mundo!                
+                </div>       
+              </div>
+              <br>
+              <pre style="overflow: hidden;">
+                <div class="row">
+                  <div class="col-12 col-sm-6">                
+                  HTML
+                  &lt;center>
+                    &lt;div class="cuadro-cont">
+                      &lt;div class="cuadro">
+                        Hola Mundo!                
+                      &lt;/div>       
+                    &lt;/div>
+                  &lt;/center>
+
+                  *******************************
+
+                  @keyframes circulo {
+                    0% {
+                      left: 0;
+                    }
+                    100% {
+                      left: calc(100% - 24rem);
+                    }
+                  }
+                  </div><!-- /.col -->
+                  <div class="col-12 col-sm-6">
+        CSS
+        .circulo-cont {
+          border: solid 1px #ff5733;
+          width: 100%;
+        }
+
+        .circulo-cont:hover .circulo.a {
+          animation-play-state: paused;
+        }
+
+        .circulo {
+          animation-name: circulo;
+          animation-direction: alternate;
+          animation-duration: 2s;
+          animation-iteration-count: infinite;
+          animation-timing-function: ease;        
+          background-color: #7dc900;
+          border-radius: 50%;
+          color: #FFF;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 200px;
+          margin: 20px;
+          width: 200px;
+          position: relative;
+        }
+                  </div><!-- /.col -->
+                </div><!-- /.row -->
+              </pre>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+        <br>
+        <h3>Configuración de la animación</h3>
+        <p><b>A menudo es conveniente utilizar la propiedad abreviada <code>animation</code> para ajustar todas las propiedades de animación a la vez</b>, sin embargo cada una por separado se usa para:</p>
+
+        <div id="accordion">
+          <div class="card">
+            <div class="card-header" id="pulsar1">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#colapso1" aria-expanded="true" aria-controls="colapso1">
+                  animation-delay
+                </button>
+              </h5>
+            </div>
+
+            <div id="colapso1" class="collapse show" aria-labelledby="pulsar1" data-parent="#accordion">
+              <div class="card-body">
+                <p>Valor inicial "0s" // Tiempo de retardo entre el momento en que el elemento se carga y el comienzo de la secuencia de la animación. El valor 0, que es el valor por defecto, indica que la animación debería comenzar inmediatamente. Usando otro valor, definimos el retardo entre el momento en que el elemento recibe la animación y el comienzo de la secuencia de la misma.</p>
+                <p>Si especificamos un valor negativo, la animación comenzará inmediatamente, pero no desde el principio de la misma, sino desde el punto que le hemos indicado. Por ejemplo, si ponemos un retardo de -1s, la animación se iniciará inmediatamente pero comenzará en el segundo 1 de la secuencia.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="pulsar2">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#colapso2" aria-expanded="false" aria-controls="colapso2">
+                  animation-direction
+                </button>
+              </h5>
+            </div>
+            <div id="colapso2" class="collapse" aria-labelledby="pulsar2" data-parent="#accordion">
+              <div class="card-body">
+                <p>Valor inicial "normal" //  Indica si la animación debe retroceder hasta el fotograma de inicio al finalizar la secuencia o si debe comenzar desde el principio al llegar al final.</p>
+                <p>Gramática formal: normal | reverse | alternate | alternate-reverse </p>
+                <h3>Valores</h3>
+                <p><code>normal</code> Cada vez que termina un ciclo, la animación se
+                  reinicia al estado inicial y comienza desde el principio. Este es el
+                  comportamiento por defecto.</p>
+                <p><code>alternate </code>La animación, al terminar un ciclo, invierte su
+                  dirección. Es decir, los pasos de la animación se ejecutan al revés.
+                  Además, las funciones de tiempo también se invierten; por ejemplo una
+                  animación ease-in se convierte en una animación con ease-out cuando se
+                  reproduce al revés. El contador que determina si la iteración es par o
+                  impar comienza en uno.</p>
+                <p><code>reverse </code>Cada ciclo de la animación se reproduce al revés .
+                  Cada vez que comienza un ciclo de animación, ésta se posiciona en el
+                  estado final y comienza desde ahí.</p>
+                <p><code>alternate-reverse </code>Es similar a alternate pero la animación
+                  se reproduce al revés. Es decir la animación se posiciona en el estado
+                  final, comienza a reproducirse al reves y, cuando llega al inicio vuelve a
+                  reproducirse de forma normal hasta llegar al final de la secuencia. Y
+                  vuelve otra vez a repetirse. El contador que determina si la iteración es
+                  par o impar comienza en uno.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="pulsar3">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#colapso3" aria-expanded="false" aria-controls="colapso3">
+                  animation-duration
+                </button>
+              </h5>
+            </div>
+            <div id="colapso3" class="collapse" aria-labelledby="pulsar3" data-parent="#accordion">
+              <div class="card-body">
+                <p>Valor inicial "0s" // Indica la cantidad de tiempo que la animación consume en completar su ciclo (duración). El valor por defecto es 0s, que indica que la animación no debe producirse.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="pulsar4">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#colapso4" aria-expanded="false" aria-controls="colapso4">
+                  animation-iteration-count
+                </button>
+              </h5>
+            </div>
+            <div id="colapso4" class="collapse" aria-labelledby="pulsar4" data-parent="#accordion">
+              <div class="card-body">
+                <p>Valor inicial "1" // El número de veces que se repite. Podemos indicar infinite para repetir la animación indefinidamente.</p>
+                <h3>Valores</h3>
+                  <p><code>infinite</code> La animación se repetirá siempre.</p>
+                  <p><code>&lt;number&gt;</code> El número de veces que la animación debe repetir: es 1 por defecto. Los valores negativos no son validos. Puede especificar valores no enteros para ejecutar
+                  parte de un ciclo de animación (por ejemplo 0.5 se ejecutara la mitad del ciclo de la animación).
+                  </p>                 
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="pulsar5">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#colapso5" aria-expanded="false" aria-controls="colapso5">
+                  animation-name
+                </button>
+              </h5>
+            </div>
+            <div id="colapso5" class="collapse" aria-labelledby="pulsar5" data-parent="#accordion">
+              <div class="card-body">
+                Valor inicial "none" // Especifica el nombre de la regla @keyframes que describe los fotogramas de la animación.
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="pulsar6">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#colapso6" aria-expanded="false" aria-controls="colapso6">
+                  animation-play-state
+                </button>
+              </h5>
+            </div>
+            <div id="colapso6" class="collapse" aria-labelledby="pulsar6" data-parent="#accordion">
+              <div class="card-body">
+                <p>Valor inicial "running" // Permite pausar y reanudar la secuencia de la animación</p>
+                <h3>Valores</h3>
+                <p><code>running</code> La animación se está ejecutando.</p>
+                <p><code>paused</code> La animación está pausada.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="pulsar7">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#colapso7" aria-expanded="false" aria-controls="colapso7">
+                  animation-timing-function
+                </button>
+              </h5>
+            </div>
+            <div id="colapso7" class="collapse" aria-labelledby="pulsar7" data-parent="#accordion">
+              <div class="card-body">
+                <p>Valor inicial "ease" // Indica el ritmo de la animación, es decir, como se muestran los fotogramas de la animación, estableciendo curvas de aceleración. Los posibles valores son una o varias <code>timing-function</code> .</p>
+                <p>Gramática formal: ease | ease-in | ease-out | ease-in-out | linear | step-start | step-end</p>
+                <p>Para animaciones con keyframes,  la timing function se aplica entre los keyframes en lugar de sobre toda la animación. Es decir, se aplica al comienzo del keyframe y al final del mismo.</p>
+                <p>Una timing function definida dentro de un keyframe afecta a ese keyframe. Si no está definida para el keyframe, se aplica la timing function para la animación en general.</p>
+                <p>Si se especifica un valor negativo para el retraso de la animación, pero el valor de inicio es implícito, el valor inicial es tomado desde el momento en que la animación es aplicada al elemento.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="pulsar8">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#colapso8" aria-expanded="false" aria-controls="colapso8">
+                  animation-fill-mode
+                </button>
+              </h5>
+            </div>
+            <div id="colapso8" class="collapse" aria-labelledby="pulsar8" data-parent="#accordion">
+              <div class="card-body">
+                <p>Valor inicial "none" // Especifica qué valores tendrán las propiedades después de finalizar la animación (los de antes de ejecutarla, los del último fotograma de la animación o ambos).</p>
+                <h3>Valores</h3>
+                <p><code>none</code> La animación no aplicará los estilos antes ni después
+                  de su ejecución.</p>
+                <p><code>forwards</code> El objeto sobre el que se aplica la animación
+                  quedará con los valores y estilos que le aplique el último <code>keyframe</code>
+                  de la ejecución de la animación. El último valor dependerá del valor de <code>animation-direction</code>
+                  y<code> animation-iteration-count</code>.</p>
+                <p><code>backwards</code> La animación aplicará los valores definidos en el
+                  primer <code>keyframe</code> tan pronto como se aplique al objeto, y los
+                  retendrá durante el tiempo de <code>animation-delay</code>. El
+                  primer keyframe dependerá del valor de <code>animation-direction</code>.</p>
+                <p><code>both</code> La animación seguirá las reglas de las opciones <code>forwards</code>
+                  y <code>backwards</code>, extendiendo las propiedades de la animación en
+                  ambas direcciones.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.accordion -->
+      </div><!-- /.sintaxis -->
+      <br>
+      <div  id="bezier">
+        <h2>Aceleración y curva de bezier</h2>
+        <p>En esta sección veremos algunos ejemplo de curvas de béziers y su equivalente con valores predefinidos.</p>
+        <br>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-6">         
+            <div class="tarjeta">
+              <h4 class="text-center">Con animation-timing-function: ease</h4>
+              <div class="circulo-cont">
+                <div class="circulo ease">
+                  <i class="fa fa-star-o fa-3x"></i>                
+                </div>       
+              </div>
+              <br>
+              <p><code>ease</code> = Si la animación inicia lento, luego rápido para luego terminar lentamente. Con <code>cubic-bezier(0.25,0.1,0.25,1)</code></p>
+              <br>
+              <pre style="overflow: hidden;">
+          HTML
+          &lt;div class="circulo-cont">
+            &lt;div class="circulo">
+              &lt;i class="fa fa-star-o fa-3x">&lt;/i>                
+            &lt;/div>       
+          &lt;/div>
+
+          CSS
+          .circulo-cont {
+            border: solid 1px #ff5733;
+            width: 100px;
+          }
+
+          .circulo-cont:hover .circulo.a {
+            animation-play-state: paused;
+          }
+          
+          .circulo {
+            animation-name: circulo2;
+            animation-direction: alternate;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease;        
+            background: #62b2e5;
+            border-radius: 50%;
+            color: #f1f1f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            margin: 10px;
+            width: 100px;
+            position: relative;
+          }
+              </pre>
+            </div><!-- /.tarjeta -->
+            <br>
+            <p>Para saber más sobre valores predefinidos y cubic-bezier en CSS, puedes consultar esta web <a href="http://www.desarrollolibre.net/blog/tema/212/css/las-curvas-de-beziers-en-las-animaciones-css-caso-google-chrome#.WsTcPeb1r0p" target="_blank">http://www.desarrollolibre.net</a></p>
+            <p>Puedes experimentar facilmente con <code>cubic-bezier</code> en esta web <a href="http://cubic-bezier.com" target="_blank">http://cubic-bezier.com</a></p>
+            <br>
+          </div><!-- /.col -->
+
+          <div class="col-12 col-sm-12 col-md-6">
+
+            <div class="tarjeta">
+              <h4 class="text-center">Con animation-timing-function: ease-in</h4>
+              <div class="circulo-cont">
+                <div class="circulo ease-in">
+                  <i class="fa fa-smile-o fa-3x"></i>                
+                </div>       
+              </div>
+              <br>
+              <p><code>ease-in</code> = Si la animación inicia lento. Con <code>cubic-bezier(0.42,0,1,1)</code></p>
+            </div><!-- /.tarjeta -->
+
+            <div class="tarjeta">
+              <h4 class="text-center">Con animation-timing-function: ease-out</h4>
+              <div class="circulo-cont">
+                <div class="circulo ease-out">
+                  <i class="fa fa-cog fa-3x"></i>                
+                </div>       
+              </div>
+              <br>
+              <p><code>ease-out </code>= Si la animación termina lento. Con <code>cubic-bezier(0,0,0.58,1)</code></p>
+            </div><!-- /.tarjeta -->
+
+            <div class="tarjeta">
+              <h4 class="text-center">Con animation-timing-function: linear</h4>
+              <div class="circulo-cont">
+                <div class="circulo linear">
+                  <i class="fa fa-arrows-h fa-3x"></i>                
+                </div>       
+              </div>
+              <br>
+              <p><code>linear</code> = Si la animación es constante, sin variaciones de velocidad. Con <code>cubic-bezier(0,0,1,1)</code></p>
+            </div><!-- /.tarjeta -->
+
+            <div class="tarjeta">
+              <h4 class="text-center">Con animation-timing-function: <br> cubic-bezier(0,.21,.79,1.23)</h4>
+              <div class="circulo-cont">
+                <div class="circulo bezier-1">
+                  <i class="fa fa-soccer-ball-o fa-3x"></i>                
+                </div>       
+              </div>
+              <br>
+              <h4 class="text-center">Con animation-timing-function: cubic-bezier(1,.15,0,.86)</h4>
+              <div class="circulo-cont">
+                <div class="circulo bezier-2">
+                  <i class="fa fa-soccer-ball-o fa-3x"></i>                
+                </div>       
+              </div>
+            </div><!-- /.tarjeta -->
+
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.bezier -->
+      <br>
+      <div id="multiples">
+        <h2>Animaciones múltiples</h2>
+        <p>Podemos añadir múltiples animaciones a un mismo elemento.</p>
+        <p>Lo primero es agregar otra animación, para lo cual agregamos un nuevo <code>keyframes</code> a la propiedad <code>animation-name</code> , separando esto con una coma. Ejemplo: <code>animation-name: balon, rebote;</code></p>
+        <p>De la misma forma debemos separar con una coma los demás valores en cada una de las propiedades que tengan que ver con nuestra animación, y así quede customizada la nueva animación, sino hacemos esto todas las animaciones tomarán el valor declarado.</p>
+        <p><span class="text-danger">Importante:</span> se pueden aplicar hasta dos animaciones a un mismo elemento.</p>        
+        <br>
+        <div class="row">
+          <div class="col-12">         
+            <div class="tarjeta">
+              <div class="balon-cont">
+                <div class="balon">
+                  <i class="fa fa-soccer-ball-o fa-5x balon-icono"></i>
+                </div>       
+              </div>
+              <br>
+              <pre style="overflow: hidden;">
+                <div class="row">
+                <div class="col-12 col-sm-6">                
+                HTML
+                &lt;div class="balon-cont">
+                  &lt;div class="balon">
+                    &lt;i class="fa fa-soccer-ball-o
+                    fa-5x balon-icono">&lt;/i>
+                  &lt;/div>       
+                &lt;/div>
+
+                *******************************
+
+                @keyframes balon {
+                  0% {
+                    left: 0;
+                  }
+                  100% {
+                    left: calc(100% - 120px);
+                  }
+                }
+
+                @keyframes giro {
+                  0% {
+                    transform: rotate(0deg);    
+                  }
+                  100% {
+                    transform: rotate(360deg);    
+                  }
+                }
+
+                @keyframes rebote {
+                  0% {
+                    transform: translateY(0) scale(1,.9);
+                  }
+                  100% {
+                    transform: translateY(-50px);
+                  }
+                }
+                </div><!-- /.col -->
+                <div class="col-12 col-sm-6">
+        CSS
+        .balon-cont {
+          background: #7dc900;
+          height: 150px;
+          width: 100%;    
+        }
+
+        .balon-cont:hover .balon {
+          animation-play-state: paused;
+        }
+
+        .balon-cont:hover .balon-icono {
+          animation-play-state: paused;
+        }
+
+        .balon {
+          animation-name: balon, rebote;
+          animation-direction: alternate;
+          animation-duration: 3s, .3s;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear, ease;
+          background-color: #f1f1f1;
+          border-radius: 50%;
+          color: #444;
+          margin: 10px;
+          height: 90px;
+          width: 90px;
+          position: relative;
+        }
+
+        .balon-icono {
+          animation-name: giro;
+          animation-direction: alternate;
+          animation-duration: 3s;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+        }
+                  </div><!-- /.col -->
+                </div><!-- /.row -->
+              </pre>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.multiples -->
+      <br>
+      <div id="detectar">
+        <h2>Detectar eventos de animaciones CSS desde JS</h2>
+        <p>Usando Javascript podemos enlazar varias animaciones, de forma tal que cuando termine una comience otra de inmediato.</p>
+        <p>En el siguiente ejemplo el balón rebotará 6 veces antes de detenerse, previo haber disminuido su rebote.</p>        
+        <br>
+        <div class="row">
+          <div class="col-12">         
+            <div class="tarjeta">
+              <div class="balon-cont">
+                <div class="balon" id="balon">
+                  <i class="fa fa-soccer-ball-o fa-5x balon-icono"></i>
+                </div>       
+              </div>
+              <br>
+              <pre style="overflow: hidden;">
+                <div class="row">
+                <div class="col-12 col-sm-6">                
+                HTML
+                &lt;div class="balon-cont">
+                  &lt;class="balon" id="balon">
+                    &lt;i class="fa fa-soccer-ball-o
+                    fa-5x balon-icono">&lt;/i>
+                  &lt;/div>       
+                &lt;/div>
+
+                *******************************
+
+                @keyframes balon {
+                  0% {
+                    left: 0;
+                  }
+                  100% {
+                    left: calc(100% - 120px);
+                  }
+                }
+
+                @keyframes disminuir {
+                  0% {
+                    transform: translateY(0) scale(1,.9);
+                  }
+                  100% {
+                    transform: translateY(-2rem);
+                  }
+                }
+
+                @keyframes giro {
+                  0% {
+                    transform: rotate(0deg);    
+                  }
+                  100% {
+                    transform: rotate(360deg);    
+                  }
+                }
+
+                @keyframes rebote {
+                  0% {
+                    transform: translateY(0) scale(1,.9);
+                  }
+                  100% {
+                    transform: translateY(-50px);
+                  }
+                }
+                </div><!-- /.col -->
+                <div class="col-12 col-sm-6">
+
+        CSS
+        .balon-cont {
+          background: #7dc900;
+          height: 150px;
+          width: 100%;    
+        }
+
+        .balon-cont:hover .balon {
+          animation-play-state: paused;
+        }
+
+        .balon-cont:hover .balon-icono {
+          animation-play-state: paused;
+        }
+
+        .balon {
+          animation-name: balon, rebote;
+          animation-direction: alternate;
+          animation-duration: 3s, .3s;
+          animation-iteration-count: infinite,20;
+          animation-timing-function: linear, ease;
+          background-color: #f1f1f1;
+          border-radius: 50%;
+          color: #444;
+          margin: 10px;
+          height: 90px;
+          width: 90px;
+          position: relative;
+        }
+
+        .balon-icono {
+          animation-name: giro;
+          animation-direction: alternate;
+          animation-duration: 3s;
+          animation-iteration-count: 6;
+          animation-timing-function: linear;
+        }
+                  </div><!-- /.col -->
+            
+              *****************************************
+              Javascript
+
+              &lt;script type="text/javascript">
+                const $balon = document.getElementById('balon');
+                $balon.addEventListener('animationend', (event) => {
+                  if (event.animationName === 'rebote') {
+                    $balon.style.animationName = 'balon,disminuir';
+                    $balon.style.animationIterationCount = '6,20';
+                    $balon.style.animationTimingFunction = 'cubic-bezier(.24,.1,.38,.39), ease';         
+                  }
+                });     
+              &lt;/script>
+                </div><!-- /.row -->
+              </pre>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.detectar -->
+      <br>
+      <div id="propiedades">
+        <h2>Propiedades animables</h2>
+        <p>Ciertas propiedades de CSS pueden ser animadas usando CSS Animations o CSS Transitions. La animación significa que se puede hacer que sus valores cambien gradualmente durante un período de tiempo determinado.</p>
+        <p><b>Las propiedades animables son:</b></p>        
+        <div class="lista">
+                <ul class="lista-sb">
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/-moz-outline-radius" target="_blank"><code>-moz-outline-radius</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/-moz-outline-radius-bottomleft" target="_blank"><code>-moz-outline-radius-bottomleft</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/-moz-outline-radius-bottomright" target="_blank"><code>-moz-outline-radius-bottomright</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/-moz-outline-radius-topleft" target="_blank"><code>-moz-outline-radius-topleft</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/-moz-outline-radius-topright" target="_blank"><code>-moz-outline-radius-topright</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/-webkit-text-fill-color" target="_blank"><code>-webkit-text-fill-color</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/-webkit-text-stroke" target="_blank"><code>-webkit-text-stroke</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/-webkit-text-stroke-color" target="_blank"><code>-webkit-text-stroke-color</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/all"><code>all</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/backdrop-filter" target="_blank"><code>backdrop-filter</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/background" target="_blank"><code>background</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/background-color" target="_blank"><code>background-color</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/background-position" target="_blank"><code>background-position</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/background-size" target="_blank"><code>background-size</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border" target="_blank"><code>border</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border-bottom" target="_blank"><code>border-bottom</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border-bottom-color" target="_blank"><code>border-bottom-color</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border-bottom-left-radius"
+            target="_blank" title="The border-bottom-left-radius CSS property sets the rounding of the bottom-left corner of the element."><code>border-bottom-left-radius</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border-bottom-right-radius"
+            target="_blank" title="The border-bottom-right-radius CSS property sets the rounding of the bottom-right corner of the element."><code>border-bottom-right-radius</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border-bottom-width"
+            target="_blank" title="The border-bottom-width CSS property sets the width of the bottom border of a box."><code>border-bottom-width</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border-color"
+            target="_blank" title="The border-color CSS property is a shorthand property for setting the colors on all four sides of an element's border."><code>border-color</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border-left"
+            target="_blank" title="The border-left CSS property is a shorthand that sets the values of border-left-color, border-left-style, and border-left-width. These properties describe an element's left border."><code>border-left</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border-left-color"
+            target="_blank" title="The border-left-color CSS property sets the color of an element's left border. Note that in many cases the shorthand CSS properties border-color or border-left are more convenient and preferable."><code>border-left-color</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border-left-width"
+            target="_blank" title="The border-left-width CSS property sets the width of the left border of a box."><code>border-left-width</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border-radius"
+            target="_blank" title="The border-radius CSS property lets you round the corners of an element's outer border edge. You can specify a single radius to make circular corners, or two radii to make elliptical corners."><code>border-radius</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border-right"
+            target="_blank" title="The border-right CSS property is a shorthand that sets the values of border-right-color, border-right-style, and border-right-width. These properties describe an element's right border."><code>border-right</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border-right-color"
+            target="_blank" title="The border-right-color CSS property sets the color of an element's right border. Note that in many cases the shorthand CSS properties&nbsp; border-color or border-right are more convenient and preferable."><code>border-right-color</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border-right-width"
+            target="_blank" title="The border-right-width CSS property sets the width of the right border of a box."><code>border-right-width</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border-top"
+            target="_blank" title="The border-top CSS property is a shorthand that sets the values of border-top-color, border-top-style, and border-top-width. These properties describe an element's top border."><code>border-top</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border-top-color"
+            target="_blank" title="The border-top-color CSS property sets the color of an element's top border. Note that in many cases the shorthand CSS properties border-color or border-top are more convenient and preferable."><code>border-top-color</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border-top-left-radius"
+            target="_blank" title="The border-top-left-radius CSS property sets the rounding of the top-left corner of the element."><code>border-top-left-radius</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border-top-right-radius"
+            target="_blank" title="The border-top-right-radius CSS property sets the rounding of the top-right corner of the element."><code>border-top-right-radius</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border-top-width"
+            target="_blank" title="The border-top-width CSS property sets the width of the top border of a box."><code>border-top-width</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/border-width"
+            target="_blank" title="The border-width CSS property is a shorthand property for setting the widths on all four sides of an element's border."><code>border-width</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/bottom" target="_blank" title="The bottom CSS property participates in specifying the vertical position of a positioned element. It has no effect on non-positioned elements."><code>bottom</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/box-shadow"
+            target="_blank" title="The box-shadow CSS property is used to add shadow effects around an element's frame. You can specify multiple effects separated by commas if you wish to do so."><code>box-shadow</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/caret-color"
+            target="_blank" title="The caret-color CSS property sets the color of the insertion caret—the visible indicator of the point at which the next character typed by the user will be inserted—within an element such as &lt;input&gt; or one with the contenteditable attribute set."><code>caret-color</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/clip" target="_blank" title="The clip CSS property defines what portion of an element is visible. The clip property applies only to absolutely positioned elements, that is elements with position:absolute or position:fixed."><code>clip</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/clip-path"
+            target="_blank" title="The clip-path CSS property creates a clipping region that defines what part of an element should be displayed. More specifically, those portions that are inside the region are shown, while those outside are hidden."><code>clip-path</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/color" target="_blank" title="The color CSS property sets the foreground color value of an element's text content and text decorations. It also sets the currentcolor value, which may be used as an indirect value on other properties, and is the default for other color properties, such as border-color."><code>color</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/column-count"
+            target="_blank" title="The column-count CSS property breaks an element's content into the specified number of columns."><code>column-count</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/column-gap"
+            target="_blank" title="The column-gap CSS property sets the size of the gap (spacing) between an element's columns."><code>column-gap</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/column-rule"
+            target="_blank" title="The column-rule CSS property sets the width, style, and color of the rule (line) drawn between columns in a multi-column layout."><code>column-rule</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/column-rule-color"
+            target="_blank" title="The column-rule-color CSS property sets the color of the rule (line) drawn between columns in a multi-column layout."><code>column-rule-color</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/column-rule-width"
+            target="_blank" title="The column-rule-width CSS property sets the width of the rule (line) drawn between columns in a multi-column layout."><code>column-rule-width</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/column-width"
+            target="_blank" title="The column-width CSS property specifies the minimum column width. The number of columns will be the maximum number of columns that can fit&nbsp;without any column having a width&nbsp;less than the column-width&nbsp;value. The actual column width may be smaller than the value of column-width if the width of the container is smaller."><code>column-width</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/columns" target="_blank" title="The columns CSS property sets the column width and column count of an element."><code>columns</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/filter" target="_blank" title="The filter CSS property lets you apply graphical effects like blurring or color shifting to an element. Filters are commonly used to adjust the rendering of images, backgrounds, and borders."><code>filter</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/flex" target="_blank" title="The flex CSS property specifies how a flex item will grow or shrink so as to fit the space available in its flex container. This is a shorthand property that sets&nbsp;flex-grow, flex-shrink, and flex-basis."><code>flex</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/flex-basis"
+            target="_blank" title="The flex-basis CSS property specifies the initial main size of a flex item. This property determines the size of the content-box unless specified otherwise using box-sizing."><code>flex-basis</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/flex-grow"
+            target="_blank" title="The flex-grow CSS property specifies the flex grow factor of a flex item. It specifies what amount of space inside the flex container the item should take up. The flex grow factor of a flex item is relative to the size of the other children in the flex-container."><code>flex-grow</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/flex-shrink"
+            target="_blank" title="The flex-shrink CSS property specifies the flex shrink factor of a flex item. Flex items will shrink to fill the container according to the flex-shrink number, when the default size of flex items is larger than the flex container."><code>flex-shrink</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/font" target="_blank" title="The font CSS property is either a shorthand property for setting font-style, font-variant, font-weight, font-size, line-height, and font-family; or a way to set the element's font to a system font, using specific keywords."><code>font</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/font-size"
+            target="_blank" title="The font-size CSS property specifies the size of the font. Setting this property may change the size of other items, too, since it is used to compute the value of em, ex, and various other relative &lt;length&gt; units."><code>font-size</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/font-size-adjust"
+            target="_blank" title="The font-size-adjust CSS property specifies that the font size should be chosen based on the height of lowercase letters rather than the height of capital letters. This is useful since the legibility of fonts, especially at small sizes, is determined more by the size of lowercase letters than by the size of capital letters."><code>font-size-adjust</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/font-stretch"
+            target="_blank" title="The font-stretch CSS property selects a normal, condensed, or expanded face from a font."><code>font-stretch</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/font-variation-settings"
+            target="_blank" title="The font-variation-settings CSS property provides low-level control over OpenType or TrueType font variations, by specifying the four letter axis names of the features you want to vary, along with their variation values."><code>font-variation-settings</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/font-weight"
+            target="_blank" title="The font-weight CSS property specifies the weight (or boldness) of the font. The font weights available to you will depend on the font-family you are using. Some fonts are only available in normal and bold."><code>font-weight</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/grid-column-gap"
+            target="_blank" title="The grid-column-gap CSS property specifies the gutter between grid columns."><code>grid-column-gap</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/grid-gap"
+            target="_blank" title="The grid-gap CSS property is a shorthand property for grid-row-gap and grid-column-gap specifying the gutters between grid rows and columns."><code>grid-gap</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/grid-row-gap"
+            target="_blank" title="The grid-row-gap CSS property specifies the gutter between grid rows."><code>grid-row-gap</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/height" target="_blank" title="The height CSS property specifies the height of an element. By default, the property defines the height of the content area. If box-sizing is set to border-box, however, it instead determines the height of the border area."><code>height</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/left" target="_blank" title="The left CSS property participates in specifying the horizontal position of a positioned element. It has no effect on non-positioned elements."><code>left</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/letter-spacing"
+            target="_blank" title="The letter-spacing CSS property specifies the spacing behavior between text characters."><code>letter-spacing</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/line-height"
+            target="_blank" title="The line-height CSS property sets the amount of space used for lines, such as in text. On block-level elements, it specifies the minimum height of line boxes within the element. On non-replaced inline elements, it specifies the height that is used to calculate line box height."><code>line-height</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/margin" target="_blank" title="The margin CSS property sets the margin area on all four sides of an element. It is a shorthand for setting all individual margins at once: margin-top, margin-right, margin-bottom, and margin-left."><code>margin</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/margin-bottom"
+            target="_blank" title="The margin-bottom CSS property sets the margin area on the bottom of an element. A positive value will place it farther than normal from its neighbors, while a negative value will place it closer."><code>margin-bottom</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/margin-left"
+            target="_blank" title="The margin-left CSS property sets the margin area on the left side of an element. A positive value will place it farther than normal from its neighbors, while a negative value will place it closer."><code>margin-left</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/margin-right"
+            target="_blank" title="The margin-right CSS property sets the margin area on the right side of an element. A positive value will place it farther than normal from its neighbors, while a negative value will place it closer."><code>margin-right</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/margin-top"
+            target="_blank" title="The margin-top CSS property sets the margin area on the top of an element. A positive value will place it farther than normal from its neighbors, while a negative value will place it closer."><code>margin-top</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/mask" target="_blank" title="The mask CSS property alters the visibility of an element by either partially or fully hiding it. This is accomplished by either masking or clipping the image at specific points."><code>mask</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/mask-border"
+            target="_blank" title="The mask-border CSS property lets you create a mask along the edge of an element's border."><code>mask-border</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/mask-position"
+            target="_blank" title="The mask-position CSS property sets the initial position, relative to the mask position layer defined by mask-origin, for each defined mask image."><code>mask-position</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/mask-size"
+            target="_blank" title="The mask-size CSS property specifies the sizes of the mask images. The size of the image can be fully or partially constrained in order to preserve its intrinsic ratio."><code>mask-size</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/max-height"
+            target="_blank" title="The max-height CSS property sets the maximum height of an element. It prevents the used value of the height property from becoming larger than the value specified for max-height."><code>max-height</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/max-width"
+            target="_blank" title="The max-width CSS property sets the maximum width of an element. It prevents the used value of the width property from becoming larger than the value specified by max-width."><code>max-width</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/min-height"
+            target="_blank" title="The min-height CSS property sets the minimum height of an element. It prevents the used value of the height property from becoming smaller than the value specified for min-height."><code>min-height</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/min-width"
+            target="_blank" title="The min-width CSS property sets the minimum width of an element. It prevents the used value of the width property from becoming smaller than the value specified for min-width."><code>min-width</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/object-position"
+            target="_blank" title="The object-position CSS property specifies the alignment of the selected replaced element's contents within the element's box."><code>object-position</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/offset" target="_blank" title="The offset CSS&nbsp;property is a shorthand property for animating an element along a defined path."><code>offset</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/offset-anchor"
+            target="_blank" title="The documentation about this has not yet been written; please consider contributing!"
+            class="new" rel="nofollow"><code>offset-anchor</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/offset-distance"
+            target="_blank" title="The&nbsp;offset-distance CSS property specifies a position along an offset-path."><code>offset-distance</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/offset-path"
+            target="_blank" title="The offset-path CSS property specifies the&nbsp;offset path where the element gets positioned. The exact element’s position on the offset path is determined by the offset-distance property. An offset&nbsp;path&nbsp;is either a specified path with one or multiple sub-paths or the geometry of a not-styled basic shape. Each shape or path must define an&nbsp;initial position&nbsp;for the computed value of &quot;0&quot; for offset-distance and an&nbsp;initial direction&nbsp;which specifies the rotation of the object to the initial position."><code>offset-path</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/offset-position"
+            target="_blank" title="The documentation about this has not yet been written; please consider contributing!"
+            class="new" rel="nofollow"><code>offset-position</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/offset-rotate"
+            target="_blank" title="The&nbsp;offset-rotate CSS property&nbsp;defines the direction of the element while positioning along the&nbsp;offset path."><code>offset-rotate</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/opacity" target="_blank" title="The opacity CSS property specifies the level of transparency of an element, that is, the degree to which the content behind the element is visible."><code>opacity</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/order" target="_blank" title="The order CSS property specifies the order used to lay out a flex or grid item in its flex or grid container. Items within the same container are laid out in ascending order according to their order values. Elements with the same order value are laid out in the order in which they appear in the source code."><code>order</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/outline" target="_blank" title="The outline CSS property is a shorthand for setting various outline properties in a single declaration: outline-style, outline-width, and outline-color."><code>outline</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/outline-color"
+            target="_blank" title="The outline-color CSS property sets the color of an element's outline."><code>outline-color</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/outline-offset"
+            target="_blank" title="The outline-offset CSS property sets the amount of space between an outline and the edge or border of an element."><code>outline-offset</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/outline-width"
+            target="_blank" title="The outline-width CSS property sets the width (thickness) of an element's outline. An outline is a line that is drawn around an element, outside the border."><code>outline-width</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/padding" target="_blank" title="The padding CSS property sets the padding area on all four sides of an element. It is a shorthand for setting all individual paddings at once: padding-top, padding-right, padding-bottom, and padding-left."><code>padding</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/padding-bottom"
+            target="_blank" title="The padding-bottom CSS property sets the height of the&nbsp;padding area on the bottom of an element."><code>padding-bottom</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/padding-left"
+            target="_blank" title="The padding-left CSS property sets the width of the padding area on the left side of an element."><code>padding-left</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/padding-right"
+            target="_blank" title="The padding-right CSS property sets the width of the padding area on the right side of an element."><code>padding-right</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/padding-top"
+            target="_blank" title="The padding-top CSS property sets the height of the padding area on the top of an element."><code>padding-top</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/perspective"
+            target="_blank" title="The perspective CSS property determines the distance between the z=0 plane and the user in order to give a 3D-positioned element some perspective. Each 3D element with z&gt;0 becomes larger; each 3D-element with z&lt;0 becomes smaller. The strength of the effect is determined by the value of this property."><code>perspective</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/perspective-origin"
+            target="_blank" title="The perspective-origin CSS property determines the position at which the viewer is looking. It is used as the vanishing point by the perspective property."><code>perspective-origin</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/right" target="_blank" title="The right CSS property participates in specifying the horizontal position of a positioned element. It has no effect on non-positioned elements."><code>right</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/rotate" target="_blank" title="The rotate CSS property allows you to specify rotation transforms individually and independantly of the transform property. This maps better to typical user interface usage, and saves having to remember the exact order of transform functions to specify in the transform value."><code>rotate</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/scale" target="_blank" title="The scale CSS property allows you to specify scale transforms individually and independantly of the transform property. This maps better to typical user interface usage, and saves having to remember the exact order of transform functions to specify in the transform value."><code>scale</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/scroll-snap-coordinate"
+            target="_blank" title="The scroll-snap-coordinate CSS property defines the x and y coordinate positions within an element that will align with its nearest ancestor scroll container's scroll-snap-destination for each respective axis."><code>scroll-snap-coordinate</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/scroll-snap-destination"
+            target="_blank" title="The scroll-snap-destination CSS property defines the position in x and y coordinates within the scroll container's visual viewport which element snap points align with."><code>scroll-snap-destination</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/shape-image-threshold"
+            target="_blank" title="The shape-image-threshold CSS property defines the alpha channel threshold used to extract the shape using an image as the value for shape-outside."><code>shape-image-threshold</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/shape-margin"
+            target="_blank" title="The shape-margin CSS property adds a margin to shape-outside."><code>shape-margin</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/shape-outside"
+            target="_blank" title="The shape-outside CSS property defines a shape around which inline content should wrap. By default, inline content wraps around its margin box."><code>shape-outside</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/tab-size"
+            target="_blank" title="The tab-size CSS property is used to customize the width of a tab (U+0009) character."><code>tab-size</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/text-decoration"
+            target="_blank" title="The text-decoration CSS property specifies the appearance of decorative lines used on text. It is a shorthand for setting one or more individual text-decoration values in a single declaration, which include text-decoration-line, text-decoration-color, and text-decoration-style."><code>text-decoration</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/text-decoration-color"
+            target="_blank" title="The text-decoration-color CSS property sets the color of the decorative additions to text that are specified by text-decoration-line; these include underlines and overlines, strikethroughs, and wavy lines like those typically used to indicate content is misspelled (for example). The specified color applies to all such decorative lines in the scope of the property's value."><code>text-decoration-color</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/text-emphasis"
+            target="_blank" title="The text-emphasis CSS property is a shorthand&nbsp;property for setting text-emphasis-style and text-emphasis-color in one declaration. This property will apply the specified emphasis mark to each character of the element's text, except separator characters, like spaces,&nbsp; and control characters."><code>text-emphasis</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/text-emphasis-color"
+            target="_blank" title="The text-emphasis-color CSS property defines the color used to draw emphasis marks on text being rendered in the HTML document. This value can also be set and reset using the text-emphasis shorthand."><code>text-emphasis-color</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/text-indent"
+            target="_blank" title="The text-indent CSS property specifies the amount of indentation (empty space) that is put before lines of text in a block. By default, this controls the indentation of only the first formatted line of the block, but the hanging and each-line keywords can be used to change this behavior."><code>text-indent</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/text-shadow"
+            target="_blank" title="The text-shadow CSS property adds shadows to text. It accepts a comma-separated list of shadows to be applied to the text and any of its decorations."><code>text-shadow</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/top" target="_blank" title="The top CSS property participates in specifying the vertical position of a positioned element. It has no effect on non-positioned elements."><code>top</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/transform"
+            target="_blank" title="The transform CSS property lets you rotate, scale, skew, or&nbsp;translate a given element. This is achieved by modifying the coordinate space of the CSS visual formatting model."><code>transform</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/transform-origin" target="_blank"><code>transform-origin</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/translate" target="_blank"><code>translate</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/vertical-align" target="_blank"><code>vertical-align</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/visibility" target="_blank"><code>visibility</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/width" target="_blank"><code>width</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/word-spacing" target="_blank"><code>word-spacing</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/z-index" target="_blank"><code>z-index</code></a></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/CSS/zoom" target="_blank"><code>zoom</code></a></li>
+      </ul>
+
+
+
+
+          
+        </div>
+      </div><!-- /.propiedades -->
+      <br>
+      <div id="element-animate">
+        <h2>Javascript element.animate</h2>
+        <p>El método <code>Element.animate()</code> es un método abreviado para crear y reproducir una animación en un elemento. Devuelve la instancia creada de un objeto <code>Animation</code> .</p>
+        <p>Síntaxis: <code>element.animate(keyframes, options);</code></p>
+        <h3>Parámetros</h3>
+        <p><code>keyframes</code></p>
+        <p>Un Objeto formateado para representar un conjunto de fotogramas clave.</p>
+        
+        <div id="accordion2">
+          <div class="card">
+            <div class="card-header" id="pulsar1b">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#colapso1b" aria-expanded="false" aria-controls="colapso1b">
+                  Opciones (options)
+                </button>
+              </h5>
+            </div>
+
+            <div id="colapso1b" class="collapse show" aria-labelledby="pulsar1b" data-parent="#accordion">
+              <div class="card-body">
+                <p>Puede ser un entero representando la duración de la animación (en milisegundos), o un Objeto conteniendo una o más propiedades de sincronización:</p>
+                <p><code><b>id</b></code> (opcional): Una propiedad única para animar con la cual se hace referencia a la animación. </p>
+                <p><code><b>delay</b></code> (opcional): La cantidad de milisegundos para retrasar el inicio de la animación. El valor predeterminado es 0.</p>
+                <p><code><b>direction </b></code> (opcional): Si la animación se ejecuta hacia adelante (<code>normal</code>), hacia atrás (<code>reverse</code>), cambia de dirección después de cada iteración (<code>alternate</code>), o se ejecuta hacia atrás y cambia de dirección después de cada iteración (<code>alternate-reverse</code>). El valor predeterminado es "<code>normal</code>".</p>       
+                <p><code><b>duration</b></code> (opcional): La cantidad de milisegundos que tarda cada iteración de la animación en completarse. El valor predeterminado es 0. Aunque esto es técnicamente opcional, tenga en cuenta que su animación no se ejecutará si este valor es 0..</p>       
+                <p><code><b>easing</b></code> (opcional): La velocidad de la animación cambia con el tiempo. Acepta los valores predefinidos "<code>linear</code>", "<code>ease</code>", "<code>ease-in</code>", "<code>ease-out</code>" y "<code>ease-in-out</code>", o un valor personalizado como "<code>cubic-bezier ( 0.42, 0, 0.58, 1)</code> ". El valor predeterminado es "<code>linear</code>".</p>       
+                <p><code><b>endDelay</b></code> (opcional): La cantidad de milisegundos para retrasar después del final de una animación. Esto es principalmente útil al secuenciar animaciones basadas en el tiempo de finalización de otra animación. El valor predeterminado es 0.</p>       
+                <p><code><b>fill</b></code> (opcional): Indica si los efectos de la animación deben ser reflejados por los elementos antes de la reproducción ("<code>backwards</code>"), retenidos después de que la animación haya terminado de reproducirse ("<code>forwards</code>"), o ambos. El valor predeterminado es "<code>none</code>".</p>       
+                <p><code><b>iterationStart</b></code> (opcional): Describe en qué punto de la iteración debe comenzar la animación. 0.5 indicaría comenzar a la mitad de la primera iteración, por ejemplo, y con este valor establecido, una animación con 2 iteraciones terminaría a la mitad de una tercera iteración. El valor predeterminado es 0.0.</p>
+                <p><code><b>iterations</b></code> (opcional): La cantidad de veces que la animación debe repetirse El valor predeterminado es 1, y también puede tomar un valor de <code>Infinity</code> para que se repita mientras exista el elemento.</p>
+                <br>
+                <h3>Opciones Futuras</h3>
+                <p>Las siguientes opciones actualmente no se han enviado a todos los sitios, pero se añadirán en un futuro próximo.</p>
+                <p><code><b>composite</b></code> Determina como se combinan los valores entre esta animación y otra, animaciones independientes sin especificar la composición de su propia operación.</p>
+                <p> <code><b>iterationComposite</b></code> Determina como se construyen los valores de una iteración a otra en esta animación. Se puede configurar para acumular o reemplazar.</p>
+                <p><code><b>spacing</b></code> Determina como los keyframes sin compensación temporal deben ser distribuidos durante la duración de la animación. 
+                <ul>
+                  <li>distribuir las posiciones de los keyframes para que la diferencia entre el anterior y el; posterior estén compensadas por igual , lo que es como decir, sin ninguna compensación, esto distribuirá equitativamente los keyframes a traves del tiempo de ejecución.</li>
+                  <li>situar las posiciones de los keyframes de manera que; igualen la diferencia entre los siguientes valores de una propiedad especifica sincronizada; , lo que es como decir,; que los keyframes estén más espaciados cuanto mayores sean los valores de sus propiedades.</li>
+                </ul>
+              </div>
+            </div>
+          </div><!-- /.card -->
+        </div><!-- /.accordion2 -->               
+        <br>
+        <div class="row">
+          <div class="col-12">         
+            <div class="tarjeta">
+              
+              <div class="bola-cont">
+                <div class="bola" id="bola"></div>       
+              </div>
+
+              <br>
+              <pre style="overflow: hidden;">
+                <div class="row">
+                  <div class="col-12 col-sm-6">                
+                  HTML
+                  &lt;div class="bola-cont">
+                    &lt;div class="bola" id="bola">&lt;/div>       
+                  &lt;/div>
+
+                  *******************************
+
+                  Javascript
+
+                  const $bola = document.getElementById('bola');
+
+                  $bola.animate([
+                    // from
+                    {
+                      left: '0%'
+                    },
+                    // to
+                    {
+                      left: 'calc(100% - 12rem)'          
+                    }
+                    ],{
+                      duration:2500,
+                      delay: 500,
+                      direction: 'alternate',
+                      easing: 'ease',
+                      iterations: Infinity,
+                    });
+                  </div><!-- /.col -->
+                  <div class="col-12 col-sm-6">
+                  CSS
+                  .bola-cont {
+                    background-color: #cacaca;
+                    padding: 10px;
+                    width: 100%;
+                  }
+
+                  .bola {
+                    background-color: #62b2e5;
+                    border-radius: 50%;
+                    height: 100px;
+                    width: 100px;
+                    position: relative;
+                  }
+                  </div><!-- /.col -->
+                </div><!-- /.row -->
+              </pre>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->        
+      </div><!-- /.element-animate -->
+      <br>
+      <div id="control">
+        <h2>Controlar animaciones</h2>
+        <p>Aplicando Javascript podemos crear controles para nuestras animaciones, en este ejemplo vemos algunos botones que se usan para este fin.</p>
+        <div class="row">
+          <div class="col-12">         
+            <div class="tarjeta">
+              
+              <div class="bola-cont">
+                <div class="bola" id="bola2"></div>
+                <br>
+                <center>
+                  <div class="btn-group" role="group" aria-label="Controles">
+                    <button type="button" class="btn btn-secondary" id="play"><i class="fa fa-play fa-lg"></i></button>
+                    <button type="button" class="btn btn-secondary" id="pause"><i class="fa fa-pause fa-lg"></i></button>
+                    <button type="button" class="btn btn-secondary" id="stop"><i class="fa fa-stop fa-lg"></i></button>
+                    <button type="button" class="btn btn-secondary" id="reverse"><i class="fa fa-backward fa-lg"></i></button>
+                  </div>
+                </center>      
+              </div>
+              <br>
+              <pre style="overflow: hidden;">
+               
+                HTML
+                &lt;div class="bola-cont">
+                  &lt;div class="bola" id="bola2">&lt;/div>
+                  &lt;br>
+                  &lt;center>
+                    &lt;div class="btn-group" role="group" aria-label="Controles">
+                      &lt;button type="button" class="btn btn-secondary" id="play">
+                      &lt;i class="fa fa-play fa-lg">&lt;/i>&lt;/button>
+                      &lt;button type="button" class="btn btn-secondary" id="pause">
+                      &lt;i class="fa fa-pause fa-lg">&lt;/i>&lt;/button>
+                      &lt;button type="button" class="btn btn-secondary" id="stop">
+                      &lt;i class="fa fa-stop fa-lg">&lt;/i>&lt;/button>
+                      &lt;button type="button" class="btn btn-secondary" id="reverse">
+                      &lt;i class="fa fa-backward fa-lg">&lt;/i>&lt;/button>
+                    &lt;/div>
+                  &lt;/center>      
+                &lt;/div>
+
+
+                CSS
+                .bola-cont {
+                  background-color: #cacaca;
+                  padding: 10px;
+                  width: 100%;
+                }
+
+                .bola {
+                  background-color: #62b2e5;
+                  border-radius: 50%;
+                  height: 100px;
+                  width: 100px;
+                  position: relative;
+                }
+
+
+                Javascript
+
+                const $bola2 = document.getElementById('bola2');
+
+                const animation = $bola2.animate([
+                  // from
+                  {
+                    left: '0%'
+                  },
+                  // to
+                  {
+                    left: 'calc(100% - 12rem)'          
+                  }
+                  ],{
+                    duration:3000,
+                    delay: 500,
+                    direction: 'normal',
+                    easing: 'ease',
+                    iterations: Infinity,
+                  })
+
+                const $playButton = document.getElementById('play');
+                const $pauseButton = document.getElementById('pause');
+                const $stopButton = document.getElementById('stop');
+                const $reverseButton = document.getElementById('reverse');
+
+                $playButton.addEventListener('click', (event) => {
+                  animation.play();
+                });
+                $pauseButton.addEventListener('click', (event) => {
+                  animation.pause();
+                });
+                $stopButton.addEventListener('click', (event) => {
+                  animation.cancel();
+                });
+                $reverseButton.addEventListener('click', (event) => {
+                  animation.reverse();
+                });
+              </pre>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->        
+      </div><!-- /.control -->
+      <br>
+      <div id="logo">
+        <h2>Animando un logo</h2>
+        <p>Aplicando Javascript podemos crear controles para nuestras animaciones, en este ejemplo vemos algunos botones que se usan para este fin.</p>
+        <div class="row">
+          <div class="col-12">         
+            <div class="tarjeta">
+              
+              <div class="logo-cont">
+                <div class="logo" id="logo">
+                  <svg
+   xmlns="http://www.w3.org/2000/svg"
+   width="349.92319"
+   height="140.08205"
+   viewBox="0 0 328.0507 131.32692"
+   id="isologo">
+  <path
+     d="m 110.24478,63.35411 c 13.408,-4.955 28.145,-8.237 42.361,-4.973 5.617,1.15 11.103,2.878 16.44,4.96 l 2.349,-5.655 c -13.283,-5.224 -27.863,-8.464 -42.114,-5.81 -7.349,1.188 -14.533,3.268 -21.504,5.863 z"
+     id="separador"
+     inkscape:connector-curvature="0"
+     style="fill:#ff6600;stroke:#ff6600;stroke-width:0.23199999;stroke-linecap:round;stroke-linejoin:round" />
+  <path
+     d="m 175.12578,48.70111 -3.731,8.985 c -13.282,-5.224 -27.863,-8.464 -42.115,-5.81 -7.348,1.188 -14.532,3.268 -21.503,5.863 -1.404,-3.418 -3.154,-6.724 -4.336,-10.215 2.194,-3.336 7.397,-3.966 10.949,-5.888 16.928,-6.251 36.443,-6.293 52.952,1.323 2.26,1.822 8.323,2.002 7.784,5.742 z"
+     id="borde"
+     inkscape:connector-curvature="0"
+     style="fill:#ff6600;stroke:#ff6600;stroke-width:0.23199999" />
+  <path
+     d="m 139.55078,130.02411 -29.306,-66.67 c 13.409,-4.956 28.145,-8.237 42.36,-4.973 5.617,1.15 11.104,2.878 16.441,4.96 l -27.688,66.665 c -0.28,0.79 -1.511,0.8 -1.807,0.018"
+     id="pizza"
+     inkscape:connector-curvature="0"
+     style="fill:#ff6600;stroke:#ff6600;stroke-width:0.23199999" />
+  <path
+     id="texto"
+     style="fill:#e6e6e6"
+     d="m 83.993277,64.727466 0,-64.727466 12.145012,0 12.145021,0 -0.007,18.838597 -0.007,18.838585 -3.37448,1.517792 c -5.193695,2.336048 -6.859265,4.254421 -6.859265,7.900412 0,1.680867 0.230851,2.285568 5.124285,13.422444 l 5.12432,11.662262 -5.8e-4,28.637418 -5.9e-4,28.63742 -12.145027,0 -12.145012,0 0,-64.727464 z m 220.032113,7.872522 c -0.32059,-8.697584 -4.57908,-14.339135 -11.96792,-15.854838 -10.58865,-2.17208 -18.39583,3.399865 -21.21005,15.137485 -0.29402,1.226281 -0.53542,2.510024 -0.53651,2.85276 l -0.002,0.623173 16.90642,-0.07118 16.90643,-0.07118 -0.0965,-2.616328 z M 285.8258,131.1062 c -8.24341,-0.6789 -15.9282,-3.25761 -22.18799,-7.44544 -10.30373,-6.89326 -16.68295,-17.87566 -18.15245,-31.251114 -0.37756,-3.436481 -0.37811,-10.855746 -10e-4,-14.730181 0.383,-3.935954 1.41811,-9.074835 2.47819,-12.303331 1.18205,-3.599918 4.0208,-9.293022 6.10218,-12.237884 5.89682,-8.343182 15.06895,-14.052623 25.54835,-15.903276 4.52496,-0.799105 12.13284,-0.803635 16.64778,-0.01017 15.29854,2.689505 25.73275,12.404788 29.80454,27.750949 1.53396,5.781409 1.72182,7.561945 1.85968,17.623919 l 0.12763,9.315786 -29.00983,0 c -27.98518,0 -29.00983,0.01797 -29.00983,0.507889 0,1.142316 1.15356,4.897648 2.15732,7.023067 2.65876,5.629716 7.55048,9.772936 13.438,11.381796 2.25298,0.61566 8.32456,0.84289 11.2178,0.41984 6.27986,-0.91823 12.70144,-4.26991 16.05796,-8.38128 0.57948,-0.70977 1.15279,-1.29049 1.27401,-1.29049 0.16786,0 9.09082,9.85109 11.56037,12.76279 0.36415,0.42937 0.32932,0.5917 -0.33174,1.54559 -1.01267,1.4613 -4.63542,5.08307 -6.58506,6.58328 -8.3288,6.40888 -20.70891,9.64987 -32.99582,8.63799 z m -88.70534,-0.008 c -14.75514,-1.21464 -26.0858,-8.72137 -32.26969,-21.37917 -1.78615,-3.65607 -2.80689,-6.51026 -3.55884,-9.95119 l -0.49645,-2.271841 9.92689,-23.837 c 9.10532,-21.86421 9.93847,-23.996927 10.06669,-25.769183 0.12945,-1.789283 0.0706,-2.068501 -0.7959,-3.775986 l -0.9357,-1.843817 2.35912,-1.236112 c 6.5526,-3.433374 15.1599,-4.984823 23.95792,-4.318367 20.02098,1.516595 32.82566,13.845811 34.18032,32.911117 l 0.19122,2.691233 -11.49279,0 -11.49278,0 0,-0.810019 c 0,-0.445524 -0.18936,-1.718682 -0.4208,-2.829238 -1.85299,-8.89157 -9.82442,-13.896232 -19.03884,-11.953049 -7.38619,1.55764 -11.53629,7.432844 -12.86634,18.21452 -0.50519,4.095198 -0.43051,14.987989 0.1311,19.124153 1.11025,8.176609 4.20521,13.563849 9.14693,15.921529 2.48919,1.18759 4.1988,1.52741 7.68424,1.52741 7.68798,0 13.24847,-3.86399 14.9475,-10.38705 0.22892,-0.87886 0.41621,-1.944472 0.41621,-2.368011 l 0,-0.770081 11.45496,0 11.45497,0 -0.002,1.035086 c -0.002,1.689576 -0.75409,6.141716 -1.37379,8.139446 -0.90667,2.92288 -2.10057,5.36736 -4.07969,8.35295 -7.30957,11.02686 -21.25817,16.88634 -37.09484,15.58268 z M 34.644611,131.0904 C 26.113266,130.43513 17.987664,127.53219 11.903436,122.9659 5.1177387,117.87314 0.72656966,110.30735 0.16816966,102.74654 l -0.16841999949,-2.28026 11.56410233949,0.0721 11.56406,0.0721 0.192643,1.51813 c 0.71254,5.61535 4.657395,9.68589 10.878239,11.22485 2.689482,0.66534 9.242135,0.65811 11.683536,-0.0129 5.982897,-1.64435 9.068203,-5.76995 8.035422,-10.7448 -0.406896,-1.96003 -1.467742,-3.410168 -3.464093,-4.735261 -3.048566,-2.023523 -6.215861,-3.068924 -17.653215,-5.82659 -14.8489,-3.580213 -23.6201143,-9.007928 -27.6234033,-17.093591 -1.79223,-3.61987 -2.171011,-5.352402 -2.172601,-9.936837 0,-3.13495 0.1153,-4.298652 0.616498,-6.165426 C 7.5963557,44.030764 23.345907,35.29332 43.495634,36.71657 c 10.849532,0.766341 19.172984,3.8931 25.652765,9.63665 1.943183,1.72241 4.56986,5.355667 5.912205,8.177938 1.307594,2.749191 2.169877,6.00843 2.460246,9.299201 l 0.188756,2.13918 -12.275573,0 -12.27555,0 -0.173977,-1.863102 c -0.323687,-3.466443 -2.651939,-6.942016 -5.677366,-8.475117 -2.259413,-1.144936 -4.529108,-1.607159 -7.891644,-1.607159 -6.243337,0 -10.339789,2.044165 -12.240357,6.108056 -0.586963,1.255047 -0.728199,1.962548 -0.724528,3.629134 0.0057,2.476595 0.563273,3.727889 2.427833,5.446605 2.597064,2.39387 6.474732,3.818013 15.643497,5.745323 13.389124,2.814437 20.897066,5.971372 26.184708,11.010121 3.223887,3.072099 5.270797,6.514557 6.411508,10.782738 0.851946,3.187631 0.854635,9.547972 0.0057,12.697062 -3.339307,12.38223 -15.634041,20.37359 -33.337159,21.6686 -3.98563,0.29155 -5.101711,0.28895 -9.141719,-0.0214 z"
+     inkscape:connector-curvature="0" />
+</svg>                   
+                </div><!-- /.logo -->   
+              </div><!-- /.logo-cont -->
+              <br>
+              <pre style="overflow: hidden;">
+                <div class="row">
+                  <div class="col-12 col-md-6">
+                  HTML
+                  &lt;div class="logo-cont">
+                    &lt;div class="logo" id="logo">
+                      Aquí hemos incluido un
+                      logotipo en formato SVG 
+                      pero dentro del HTML para 
+                      poder manipular
+                      sus fragmentos con CSS.                   
+                    &lt;/div>   
+                  &lt;/div>
+
+
+                  CSS
+                  .logo-cont {
+                    background-color: #222;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 30px;
+                    height: 50vh;
+                    width: 100%;
+                  }
+
+                  #isologo {
+                    animation-name: isologo;
+                    animation-duration: 6s;
+                    animation-iteration-count: infinite;      
+                  }
+
+                  #separador {
+                    animation-name: separador;
+                    animation-duration: 6s;
+                    animation-iteration-count: infinite;      
+                  }
+                  #texto {
+                    animation-name: texto;
+                    animation-duration: 6s;
+                    animation-iteration-count: infinite;      
+                  }                    
+                  </div>
+
+                  <div class="col-12 col-md-6">
+
+                  Keyframes
+
+                  @keyframes isologo {
+                    0% {
+                      opacity: 0;
+                      transform: scale(0.3) rotate(0deg); 
+                    }
+                    30% {
+                      opacity: 1;
+                      transform: scale(1.3) rotate(360deg);
+                    }
+                    80% {
+                      opacity: 1;
+                      transform: scale(1) rotate(360deg);
+                    }
+                    100% {
+                      opacity: 0;
+                      transform: scale(0.3) rotate(0deg);   
+                    }
+                  }
+                  @keyframes separador {
+                    0% {
+                      opacity: 1;   
+                    }
+                    100% {
+                      opacity: 0;   
+                    }
+                  }
+                  @keyframes texto {
+                    0% {
+                      opacity: 0;   
+                    }
+                    45% {
+                      opacity: 0;   
+                    }
+                    75% {
+                      opacity: 1;
+                    }
+                    100% {
+                      opacity: 1;   
+                    }
+                  }
+                  </div>                  
+                </div>
+              </pre>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->        
+      </div><!-- /.logo -->
+      <br>  
+    </div><!-- /.container -->    
+  </div><!-- /. CONTENIDO -->
+
+  <script type="text/javascript">
+
+    // Para concatenar dos animaciones
+    const $balon = document.getElementById('balon');
+    $balon.addEventListener('animationend', (event) => {
+      if (event.animationName === 'rebote') {
+        $balon.style.animationName = 'balon,disminuir';
+        $balon.style.animationIterationCount = '6, 20';
+        $balon.style.animationTimingFunction = 'cubic-bezier(.24,.1,.38,.39), ease';          
+      }
+    })
+
+    // Para hacer una animación con JS
+    const $bola = document.getElementById('bola');
+    $bola.animate([
+      // from
+      {
+        left: '0%'
+      },
+      // to
+      {
+        left: 'calc(100% - 12rem)'          
+      }
+      ],{
+        duration:2500,
+        delay: 500,
+        direction: 'alternate',
+        easing: 'ease',
+        iterations: Infinity,
+      })
+
+    // Para controlar la animación con JS
+    const $bola2 = document.getElementById('bola2');
+    const animation = $bola2.animate([
+      // from
+      {
+        left: '0%'
+      },
+      // to
+      {
+        left: 'calc(100% - 12rem)'          
+      }
+      ],{
+        duration:3000,
+        delay: 500,
+        direction: 'normal',
+        easing: 'ease',
+        iterations: Infinity,
+      })
+
+    const $playButton = document.getElementById('play');
+    const $pauseButton = document.getElementById('pause');
+    const $stopButton = document.getElementById('stop');
+    const $reverseButton = document.getElementById('reverse');
+
+    $playButton.addEventListener('click', (event) => {
+      animation.play();
+    });
+    $pauseButton.addEventListener('click', (event) => {
+      animation.pause();
+    });
+    $stopButton.addEventListener('click', (event) => {
+      animation.cancel();
+    });
+    $reverseButton.addEventListener('click', (event) => {
+      animation.reverse();
+    });
+  </script>  
+********** FOOTER -->
+<div class="footer" id="footer">
+    <div id="footer-social">
+      <!-- Para ver en la we https://caballero73.github.io/animacion-w/ -->
+      <a href="https://github.com/Caballero73/animacion-w" target="_blank"><div class="iconos">
+        <i class="fa fa-github fa-lg"></i>
+      </div></a>
+      <a href="https://www.linkedin.com/in/enrique-valerio-6b347b126/" target="_blank"><div class="iconos">
+        <i class="fa fa-linkedin fa-lg"></i>
+      </div></a>
+    </div>
+    <p class="autor text-center"><span class="fa fa-cc"></span><span> &nbsp; Enrique J. Valerio G. 2018 </span><span> &nbsp; | &nbsp; </span>
+    <span> Powered by  <span class="">Enrique Valerio</span> </span></p>
+</div>
+<!-- /. FOOTER
+    <!-- ************* CORE JS -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/typed.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/wow.js"></script>
+    <script src="assets/js/app.min.js"></script>    
+</body>
+</html>

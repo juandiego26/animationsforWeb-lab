@@ -1,0 +1,445 @@
+  <!-- ********** CONTENIDO -->
+  <div id="animaciones2_cont">
+  	<div class="container">
+      <h1 class="text-center">Aplicación de las Animaciones</h1>
+      <p>A continuación veremos algunos ejemplos donde se han aplicado algunos de los conocimientos adquiridos hasta el momento.</p>
+      <!-- *********** NAVEGACION INTERNA -->
+      <ul class="nav nav-tabs justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" href="#sprites">Sprites</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#notificacion">Notificaciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#olas">Olas Animadas</a>
+        </li>
+      </ul>
+      <!-- NAVEGACION INTERNA ************* -->
+      <br>
+
+      <div id="sprites">
+        <h2>Sprites</h2>
+        <p>La idea para mejorar el rendimiento de una página que descarga por ejemplo 15 imágenes consiste en crear una única imagen grande que incluya las 15 imágenes individuales y utilizar las propiedades CSS de las imágenes de fondo para mostrar cada imagen. Esta técnica se presentó en el artículo <i>CSS Sprites: Image Slicing’s Kiss of Death</i> y desde entonces se conoce con el nombre de sprites CSS.</p>
+        <p>El siguiente ejemplo explica el uso de los sprites CSS en un sitio web.</p>        
+        <br>
+        <div class="row">
+          <div class="col-12">         
+            <div class="tarjeta">
+              <center>
+                <small class="text-success">Haz click sobre los personajes a ver que ocurre.</small>
+                <br><br>
+                <div class="sprites-cont">
+                  <div class="ninja1" id="ninja1"></div>       
+                  <div class="ninja2" id="ninja2"></div>       
+                </div>
+              </center>
+              <br>
+              <pre style="overflow: hidden;">
+                <div class="row">
+                  <div class="col-12 col-sm-6">                
+                  HTML
+                  &lt;div class="sprites-cont">
+                    &lt;div class="ninja1" id="ninja1">&lt;/div>       
+                    &lt;div class="ninja2" id="ninja2">&lt;/div>       
+                  &lt;/div>
+
+                  *******************************
+
+                  @keyframes ninja1 {
+                    0% {
+                      background-position: 0 0;   
+                    }
+                    100% {
+                      background-position: -900px 0;    
+                    }
+                  }
+                  @keyframes ninja2 {
+                    0% {
+                      background-position: 0 0;   
+                    }
+                    100% {
+                      background-position: -1080px 0;   
+                    }
+                  }
+                  </div><!-- /.col -->
+                  <div class="col-12 col-sm-6">
+        CSS
+        .sprites-cont {
+          background-image: url('../img/dojo.jpg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          height: 12rem;
+          width: 45rem;
+        }
+
+        .ninja1 {
+          background-image: 
+          url('../img/sprite1.png');
+          background-position: 0 0;
+          background-size: cover;
+          cursor: pointer;
+          height: 11.4rem;
+          width: 10rem;
+        }
+        .ninja2 {
+          background-image: 
+          url('../img/sprite2.png');
+          background-position: 0 0;
+          background-size: cover;
+          cursor: pointer;
+          height: 11.4rem;
+          width: 12rem;
+        }
+
+        .salto {
+          animation-name: ninja1;
+          animation-duration: .8s;
+          animation-timing-function: steps(9);      
+        } 
+
+        .ataque {
+          animation-name: ninja2;
+          animation-duration: 1.2s;
+          animation-timing-function: steps(9);      
+        }  
+                  </div><!-- /.col -->
+                </div><!-- /.row -->
+
+              Javascript
+
+              // Acción de click para salto de Ninja
+              const $ninja1 = document.getElementById('ninja1');
+              $ninja1.addEventListener('click', (event) => {$ninja1.classList.add('salto');});
+
+              $ninja1.addEventListener('animationend', (event) => {$ninja1.classList.remove('salto');});
+
+              // Acción de click para ataque de Ninja
+              const $ninja2 = document.getElementById('ninja2');
+              $ninja2.addEventListener('click', (event) => {$ninja2.classList.add('ataque');});
+              $ninja2.addEventListener('animationend', (event) => {$ninja2.classList.remove('ataque');});
+              </pre>
+              <p><span class="text-danger">Nota:</span> El alto del contenedor de la imagen debe ser igual al ancho que se mostrará, es decir si vamos a mostrar un segmento de 100px de ancho el contenedor debe tener 100px de alto. En el caso de que trabajemos con <code>background-image</code> esta deberá tener un <code>background-size: cover</code>, para evitar deformaciones en la animación.</p>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+        <br>        
+      </div><!-- /.sprites -->
+      <br> 
+
+      <div id="notificacion">
+        <h2>Notificaciones</h2>
+        <p>Las notificaciones son otra manera muy útil de comunicación entre tu sitio y el usuario.</p>        
+        <br>
+        <div class="row">
+          <div class="col-12">         
+            <div class="tarjeta">
+                <div class="notificacion-cont">
+                  <button class="btn btn-primary btn-lg" id="enviar">Enviar Notificación</button>       
+                  <div class="campana" id="campana" data-count=''></div>
+                </div>
+              <br>
+              <pre style="overflow: hidden;">
+                <div class="row">
+                  <div class="col-12 col-sm-6">                
+                  HTML
+                  &lt;div class="notificacion-cont">
+                    &lt;button class="btn btn-primary btn-lg" 
+                    id="enviar">Enviar Notificación&lt;/button>       
+                    &lt;div class="campana" id="campana" 
+                    data-count=''>&lt;/div>
+                  &lt;/div>
+
+                  *******************************
+
+                  @keyframes redoble {
+                    0% {
+                      transform: rotate(35deg);
+                    }
+                    12.5% {
+                      transform: rotate(-30deg);
+                    }
+                    25% {
+                      transform: rotate(25deg);
+                    }
+                    37.5% {
+                      transform: rotate(-20deg);
+                    }
+                    50% {
+                      transform: rotate(15deg);
+                    }
+                    62.5% {
+                      transform: rotate(-10deg);
+                    }
+                    75% {
+                      transform: rotate(5deg);
+                    }
+                    87.5% {
+                      transform: rotate(-2deg);
+                    }
+                    100% {
+                      transform: rotate(0deg);
+                    }
+                  }
+
+                  ****************************************
+                  Javascript
+
+                  // Acción de click para enviar notificacion
+                   y sumar esas notificaciones
+                  const $enviar = 
+                  document.getElementById('enviar');
+                  const $campana = 
+                  document.getElementById('campana');
+                  $enviar.addEventListener('click', (event) =>
+                   {
+                    const contar = 
+                    Number($campana.getAttribute('data-count'))||0;
+                    $campana.setAttribute('data-count',contar+1);
+                    $campana.classList.add('show-count');
+                    $campana.classList.add('redoblar');
+                  });
+
+                  $campana.addEventListener('animationend', 
+                  (event) => 
+                  {$campana.classList.remove('redoblar');});
+
+                  </div><!-- /.col -->
+                  <div class="col-12 col-sm-6">
+                CSS
+                .notificacion-cont {
+                  background-color: #222222;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  height: 100px;
+                  width: 100%;
+                }
+
+                .campana {
+                  border-radius: 3px;
+                  color: #f1f1f1;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  height: 30px;
+                  margin: 0 10px;
+                  position: relative;
+                  width: 50px;
+                }
+
+                campana:before {
+                  content: '\f0f3';
+                  display: block;
+                  font-family: 'FontAwesome';
+                  font-size: 20px;
+                  transform-origin: center top;
+                }
+
+                .campana.redoblar:before {
+                  animation-name: redoble;
+                  animation-duration: 1.5s;
+                  animation-timing-function: 
+                    ease-out;
+                }
+                .campana:after {
+                  background: #ff0046;
+                  border-radius: 50%;
+                  content: attr(data-count);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-family: sans-serif;
+                  font-size: 9px;
+                  font-weight: bold;
+                  height: 17px;
+                  min-width: 17px;
+                  opacity: 0;
+                  position: absolute;
+                  right: 0;
+                  top: 0;
+                  transform: scale(.5);
+                  transition: .3s;
+                }
+
+                .campana.show-count:after {
+                  opacity: 1;
+                  transform: scale(1);
+                }
+                  </div><!-- /.col -->
+                </div><!-- /.row -->                
+              </pre>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.notificacion -->
+
+      <div id="olas">
+        <h2>Olas Animadas</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ducimus libero in, id tenetur sunt debitis reiciendis dicta. Ab, incidunt libero. Quidem natus quos et assumenda expedita nobis, architecto nesciunt.</p>        
+        <br>
+        <div class="row">
+          <div class="col-12">         
+            <div class="tarjeta">
+                <div class="contenedor">
+                  <div class="olas-cont">
+                    <h1>Las olas del mar</h1>
+                    <p>Quiero tomar con mis dos manos, en el cuenco formada por ambas, la belleza de las olas en la orilla, Un dos tres, un dos tres... forman un bucle.</p>
+                  </div>
+                  <div><img class="ola a" src="assets/img/ola1.svg" alt="Ola marina"></div>
+                  <div><img class="ola b" src="assets/img/ola2.svg" alt="Ola marina"></div>
+                  <div><img class="boya" src="assets/img/boya.svg" alt="Boya"></div>
+                  <div><img class="ola c" src="assets/img/ola3.svg" alt="Ola marina"></div>
+                </div>
+              <br>
+              <pre style="overflow: hidden;">
+                <div class="row">
+                  <div class="col-12 col-sm-6">                
+                  HTML
+                  &lt;div class="contenedor">
+                    &lt;div class="olas-cont">
+                      &lt;h1>Las olas del mar&lt;/h1>
+                      &lt;p>Quiero tomar con mis dos manos, en el 
+                      ... forman un bucle.&lt;/p>
+                    &lt;/div>
+                    &lt;div>&lt;img class="ola a" 
+                    src="assets/img/ola1.svg" 
+                    alt="Ola marina">&lt;/div>
+                    &lt;div>&lt;img class="ola b" 
+                    src="assets/img/ola2.svg" 
+                    alt="Ola marina">&lt;/div>
+                    &lt;div>&lt;img class="boya" 
+                    src="assets/img/boya.svg" 
+                    alt="Boya">&lt;/div>
+                    &lt;div>&lt;img class="ola c" 
+                    src="assets/img/ola3.svg" 
+                    alt="Ola marina">&lt;/div>
+                  &lt;/div>
+
+                  *******************************
+
+                  @keyframes ola {
+                    0% {
+                      transform: translate(0 , 0);    
+                    }
+                    50% {
+                      transform: translate(-12rem , 
+                      -1.5rem);   
+                    }
+                    100% {
+                      transform: translate(12rem , 
+                      -2.5rem);    
+                    }
+                  }
+                  @keyframes boya {
+                    0% {
+                      transform: translate(0rem, 0) 
+                      rotate(-5deg);    
+                    }
+                    100% {
+                      transform: translate(2rem, -3rem) 
+                      rotate(7deg);   
+                    }
+                  }
+                  </div><!-- /.col -->
+                  <div class="col-12 col-sm-6">
+                CSS
+                .contenedor {
+                  background-color: #5AF;
+                  display: flex;
+                  align-items: flex-start;
+                  justify-content: center;
+                  height: 500px;
+                  overflow: hidden;
+                  position: relative;
+                  width: 100%;
+                }
+
+                .olas-cont {
+                  color: rgba(241, 241, 241, 0.8);
+                  font-family: sans-serif;
+                  font-size: 25px;
+                  padding-top: 30px;
+                  width: 80%;
+                  z-index: 10;
+                }
+
+                .ola {
+                  animation: 5s ola infinite 
+                  alternate;
+                  bottom: -60px;
+                  left: -160px;
+                  position: absolute;
+                }
+
+                .ola.a {
+                  animation-delay: 0;
+                  z-index: 1;
+                }
+                .ola.b {
+                  animation-delay: 1s;
+                  z-index: 3;
+                }
+                .ola.c {
+                  animation-delay: 2s;
+                  z-index: 4;
+                }
+              }
+
+              .boya {
+                animation: 2.5s boya infinite 
+                alternate;
+                left: 50%;
+                bottom: 50px;
+                z-index: 2;
+                position: absolute;
+              }
+                  </div><!-- /.col -->
+                </div><!-- /.row -->                
+              </pre>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.olas -->  
+    </div><!-- /.container -->    
+  </div><!-- /. CONTENIDO -->
+
+  <script type="text/javascript">
+
+    // Acción de click para salto de Ninja
+    const $ninja1 = document.getElementById('ninja1');
+    $ninja1.addEventListener('click', (event) => {
+      $ninja1.classList.add('salto');
+    });
+
+    $ninja1.addEventListener('animationend', (event) => {
+      $ninja1.classList.remove('salto');
+    });
+    // Acción de click para ataque de Ninja
+    const $ninja2 = document.getElementById('ninja2');
+    $ninja2.addEventListener('click', (event) => {
+      $ninja2.classList.add('ataque');
+    });
+
+    $ninja2.addEventListener('animationend', (event) => {
+      $ninja2.classList.remove('ataque');
+    });
+    // Acción de click para enviar notificacion
+    // y sumar esas notificaciones
+    const $enviar = document.getElementById('enviar');
+    const $campana = document.getElementById('campana');
+    $enviar.addEventListener('click', (event) => {
+      const contar = Number($campana.getAttribute('data-count')) || 0;
+      $campana.setAttribute('data-count', contar + 1);
+      $campana.classList.add('show-count');
+      $campana.classList.add('redoblar');
+    });
+
+    $campana.addEventListener('animationend', (event) => {
+      $campana.classList.remove('redoblar');
+    });
+  </script>

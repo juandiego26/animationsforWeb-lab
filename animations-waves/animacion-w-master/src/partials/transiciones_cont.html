@@ -1,0 +1,82 @@
+  <!-- ********** CONTENIDO -->
+  <div id="transiciones_cont">
+  	<div class="container">
+      <h1>Transciciones</h1>
+      <p>Las transiciones CSS, proporcionan una forma de animar los cambios de las propiedades CSS, en lugar de que los cambios surtan efecto de manera instantánea.</p>
+      <p>Por ejemplo, si cambias el color de un elemento de blanco a negro, normalmente el cambio es instantáneo. Al habilitar las transiciones CSS, el cambio sucede en un intervalo de tiempo que puedes especificar, siguiendo una curva de aceleración que puedes personalizar.<p>
+      <br>
+  		<div class="row">
+  			<div class="col-12 col-sm-6">
+  				<h3>Sintaxis de transiciones</h3><br>
+  				<div class="tarjeta">
+  					<center><div class="pelota"></div></center>
+  					<br>            
+  					<code>
+  						transition-property: width,height;<br>
+  						transition-duration: 1s;<br>  						
+  						transition-delay: .2s;<br>
+  						transition-timing-function: ease;
+  					</code>
+  				</div><!-- /.tarjeta -->
+  				<br>
+	  			<div class="tarjeta">
+	  				<p class="texto">Este texto cambia al hacer hover sobre el</p>
+	  				<br>
+            CSS
+              <pre>
+              .texto {
+                color: #444;
+                font-size: 40px;
+                font-weight: bolder;
+                text-align: center;
+                transition: color .7s ease-out;
+              }
+
+              .texto:hover {
+                color: #62b2e5;
+              }
+              </pre>
+	  			</div><!-- /.tarjeta -->				
+  			</div><!-- /.col -->
+
+  			<div class="col-12 col-sm-6">
+  				<h3>Transiciones de interacción</h3><br>
+  				<div class="tarjeta">
+  					<div class="canasta">
+  						<div class="pelotas a">Hola</div>
+  						<div class="pelotas b">Mundo!</div>
+  					</div>
+  					<br>
+  					<code>
+  						transition: 1s .2s;
+  					</code>
+  				</div><!-- /.tarjeta -->
+  				<br>
+	  			<div class="tarjeta">
+	  				<div class="cuadro"></div>
+	  				<br>
+            CSS
+            	<pre>
+              .cuadro {
+              	background: #ff5733;
+              	border-radius: 0 25px 25px 0;
+              	height: 100px;
+              	transition: width 2s linear.5s;
+              	width: 100px;
+              }
+              .cuadro:hover {
+              	width: 300px;
+              }
+            	</pre>	  				
+	  			</div><!-- /.tarjeta -->				
+  			</div><!-- /.col -->
+  		</div><!-- /.row -->
+      <br>
+      <p><code>transition-property</code> = Especifica el nombre o nombres de las propiedades CSS a las que deberían aplicarse las transiciones. Sólo las propiedades que se enumeran aquí son animadas durante las transiciones; los cambios en el resto de las propiedades suceden de manera instantánea como siempre.</p>
+
+      <p><code>transition-duration </code> = Especifica la duración en la que sucederán las transiciones. Puedes especificar una única duración que se aplique a todas las propiedades durante la transición o valores múltiples que permitan a cada propiedad de transición un período de tiempo diferente.</p>
+
+      <p><code>transition-timing-function</code> = Especifica la curva cúbica bézier que se usa para definir cómo se computan los valores intermedios para las propiedades.</p>
+      <p><code>transition-delay </code> = Define el tiempo de espera entre el momento en que se cambia una propiedad y el inicio de la transición.</p>
+  	</div><!-- /.container -->    
+  </div><!-- /. CONTENIDO -->

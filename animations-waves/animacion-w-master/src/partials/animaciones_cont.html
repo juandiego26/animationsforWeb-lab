@@ -1,0 +1,1035 @@
+  <!-- ********** CONTENIDO -->
+  <div id="animaciones_cont">
+  	<div class="container">
+      <h1 class="text-center">Animaciones</h1>
+      <p>Las animaciones CSS3 permiten dinamizar la transición entre un estilo CSS y otro. Las animaciones constan de dos componentes: un estilo que describe la animación CSS y un conjunto de fotogramas que indican su estado inicial y final, así como posibles puntos intermedios en la misma.</p>
+      <p>Las animaciones CSS tienen tres ventajas principales sobre las técnicas tradicionales de animación basada en scripts:</p>
+      <ul>
+        <li>Son muy fácil usar para animaciones sencillas, puedes
+          hacerlo incluso sin tener conocimientos de Javascript.</li>
+        <li>La animación se muestra correctamente, incluso en equipos poco
+          potentes. Animaciones simples realizadas en Javascript pueden verse mal
+          (a menos que estén muy bien echas). El motor de renderizado puede usar
+          técnicas de optimización como el "frame-skipping" u otras tecnicas para
+          manteber que la animación se vea tan suave como sea posible.</li>
+        <li>Al ser el navegador quien controle la secuencia de la animación,
+          permitimos que optimice el rendimiento y eficiencia de la misma, por
+          ejemplo, reduciendo la frecuencia de actualización de la animación
+          ejecutándola en pestañas que no estén visibles.</li>
+      </ul>
+      <!-- *********** NAVEGACION INTERNA -->
+      <ul class="nav nav-tabs justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" href="#sintaxis">Sintaxis de CSS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#bezier">Aceleración y curva de bezier</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#multiples">Animaciones múltiples</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#detectar">Detectar eventos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#propiedades">Propiedades animables</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#element-animate">Javascript element.animate</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#control">Controlar animaciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#logo">Animando un logo</a>
+        </li>
+      </ul>
+      <!-- NAVEGACION INTERNA ************* -->
+
+      <div id="sintaxis">
+        <h2>Sintaxis de CSS</h2>
+        <p>La propiedad <code>animation</code> de CSS es una propiedad abreviada (shorthand property) para <code>animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count </code> y <code> animation-direction</code>.</p>
+        <p>La lista de propiedades CSS que pueden ser animadas son las mismas propiedades soportadas por <code>transitions</code>.</p>        
+        <br>
+        <div class="row">
+          <div class="col-12">         
+            <div class="tarjeta">
+              <div class="circulo-cont">
+                <div class="circulo">
+                  Hola Mundo!                
+                </div>       
+              </div>
+              <br>
+              <pre style="overflow: hidden;">
+                <div class="row">
+                  <div class="col-12 col-sm-6">                
+                  HTML
+                  &lt;center>
+                    &lt;div class="cuadro-cont">
+                      &lt;div class="cuadro">
+                        Hola Mundo!                
+                      &lt;/div>       
+                    &lt;/div>
+                  &lt;/center>
+
+                  *******************************
+
+                  @keyframes circulo {
+                    0% {
+                      left: 0;
+                    }
+                    100% {
+                      left: calc(100% - 24rem);
+                    }
+                  }
+                  </div><!-- /.col -->
+                  <div class="col-12 col-sm-6">
+        CSS
+        .circulo-cont {
+          border: solid 1px #ff5733;
+          width: 100%;
+        }
+
+        .circulo-cont:hover .circulo.a {
+          animation-play-state: paused;
+        }
+
+        .circulo {
+          animation-name: circulo;
+          animation-direction: alternate;
+          animation-duration: 2s;
+          animation-iteration-count: infinite;
+          animation-timing-function: ease;        
+          background-color: #7dc900;
+          border-radius: 50%;
+          color: #FFF;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 200px;
+          margin: 20px;
+          width: 200px;
+          position: relative;
+        }
+                  </div><!-- /.col -->
+                </div><!-- /.row -->
+              </pre>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+        <br>
+        <h3>Configuración de la animación</h3>
+        <p><b>A menudo es conveniente utilizar la propiedad abreviada <code>animation</code> para ajustar todas las propiedades de animación a la vez</b>, sin embargo cada una por separado se usa para:</p>
+
+        <div id="accordion">
+          <div class="card">
+            <div class="card-header" id="pulsar1">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#colapso1" aria-expanded="true" aria-controls="colapso1">
+                  animation-delay
+                </button>
+              </h5>
+            </div>
+
+            <div id="colapso1" class="collapse show" aria-labelledby="pulsar1" data-parent="#accordion">
+              <div class="card-body">
+                <p>Valor inicial "0s" // Tiempo de retardo entre el momento en que el elemento se carga y el comienzo de la secuencia de la animación. El valor 0, que es el valor por defecto, indica que la animación debería comenzar inmediatamente. Usando otro valor, definimos el retardo entre el momento en que el elemento recibe la animación y el comienzo de la secuencia de la misma.</p>
+                <p>Si especificamos un valor negativo, la animación comenzará inmediatamente, pero no desde el principio de la misma, sino desde el punto que le hemos indicado. Por ejemplo, si ponemos un retardo de -1s, la animación se iniciará inmediatamente pero comenzará en el segundo 1 de la secuencia.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="pulsar2">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#colapso2" aria-expanded="false" aria-controls="colapso2">
+                  animation-direction
+                </button>
+              </h5>
+            </div>
+            <div id="colapso2" class="collapse" aria-labelledby="pulsar2" data-parent="#accordion">
+              <div class="card-body">
+                <p>Valor inicial "normal" //  Indica si la animación debe retroceder hasta el fotograma de inicio al finalizar la secuencia o si debe comenzar desde el principio al llegar al final.</p>
+                <p>Gramática formal: normal | reverse | alternate | alternate-reverse </p>
+                <h3>Valores</h3>
+                <p><code>normal</code> Cada vez que termina un ciclo, la animación se
+                  reinicia al estado inicial y comienza desde el principio. Este es el
+                  comportamiento por defecto.</p>
+                <p><code>alternate </code>La animación, al terminar un ciclo, invierte su
+                  dirección. Es decir, los pasos de la animación se ejecutan al revés.
+                  Además, las funciones de tiempo también se invierten; por ejemplo una
+                  animación ease-in se convierte en una animación con ease-out cuando se
+                  reproduce al revés. El contador que determina si la iteración es par o
+                  impar comienza en uno.</p>
+                <p><code>reverse </code>Cada ciclo de la animación se reproduce al revés .
+                  Cada vez que comienza un ciclo de animación, ésta se posiciona en el
+                  estado final y comienza desde ahí.</p>
+                <p><code>alternate-reverse </code>Es similar a alternate pero la animación
+                  se reproduce al revés. Es decir la animación se posiciona en el estado
+                  final, comienza a reproducirse al reves y, cuando llega al inicio vuelve a
+                  reproducirse de forma normal hasta llegar al final de la secuencia. Y
+                  vuelve otra vez a repetirse. El contador que determina si la iteración es
+                  par o impar comienza en uno.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="pulsar3">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#colapso3" aria-expanded="false" aria-controls="colapso3">
+                  animation-duration
+                </button>
+              </h5>
+            </div>
+            <div id="colapso3" class="collapse" aria-labelledby="pulsar3" data-parent="#accordion">
+              <div class="card-body">
+                <p>Valor inicial "0s" // Indica la cantidad de tiempo que la animación consume en completar su ciclo (duración). El valor por defecto es 0s, que indica que la animación no debe producirse.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="pulsar4">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#colapso4" aria-expanded="false" aria-controls="colapso4">
+                  animation-iteration-count
+                </button>
+              </h5>
+            </div>
+            <div id="colapso4" class="collapse" aria-labelledby="pulsar4" data-parent="#accordion">
+              <div class="card-body">
+                <p>Valor inicial "1" // El número de veces que se repite. Podemos indicar infinite para repetir la animación indefinidamente.</p>
+                <h3>Valores</h3>
+                  <p><code>infinite</code> La animación se repetirá siempre.</p>
+                  <p><code>&lt;number&gt;</code> El número de veces que la animación debe repetir: es 1 por defecto. Los valores negativos no son validos. Puede especificar valores no enteros para ejecutar
+                  parte de un ciclo de animación (por ejemplo 0.5 se ejecutara la mitad del ciclo de la animación).
+                  </p>                 
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="pulsar5">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#colapso5" aria-expanded="false" aria-controls="colapso5">
+                  animation-name
+                </button>
+              </h5>
+            </div>
+            <div id="colapso5" class="collapse" aria-labelledby="pulsar5" data-parent="#accordion">
+              <div class="card-body">
+                Valor inicial "none" // Especifica el nombre de la regla @keyframes que describe los fotogramas de la animación.
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="pulsar6">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#colapso6" aria-expanded="false" aria-controls="colapso6">
+                  animation-play-state
+                </button>
+              </h5>
+            </div>
+            <div id="colapso6" class="collapse" aria-labelledby="pulsar6" data-parent="#accordion">
+              <div class="card-body">
+                <p>Valor inicial "running" // Permite pausar y reanudar la secuencia de la animación</p>
+                <h3>Valores</h3>
+                <p><code>running</code> La animación se está ejecutando.</p>
+                <p><code>paused</code> La animación está pausada.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="pulsar7">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#colapso7" aria-expanded="false" aria-controls="colapso7">
+                  animation-timing-function
+                </button>
+              </h5>
+            </div>
+            <div id="colapso7" class="collapse" aria-labelledby="pulsar7" data-parent="#accordion">
+              <div class="card-body">
+                <p>Valor inicial "ease" // Indica el ritmo de la animación, es decir, como se muestran los fotogramas de la animación, estableciendo curvas de aceleración. Los posibles valores son una o varias <code>timing-function</code> .</p>
+                <p>Gramática formal: ease | ease-in | ease-out | ease-in-out | linear | step-start | step-end</p>
+                <p>Para animaciones con keyframes,  la timing function se aplica entre los keyframes en lugar de sobre toda la animación. Es decir, se aplica al comienzo del keyframe y al final del mismo.</p>
+                <p>Una timing function definida dentro de un keyframe afecta a ese keyframe. Si no está definida para el keyframe, se aplica la timing function para la animación en general.</p>
+                <p>Si se especifica un valor negativo para el retraso de la animación, pero el valor de inicio es implícito, el valor inicial es tomado desde el momento en que la animación es aplicada al elemento.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" id="pulsar8">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#colapso8" aria-expanded="false" aria-controls="colapso8">
+                  animation-fill-mode
+                </button>
+              </h5>
+            </div>
+            <div id="colapso8" class="collapse" aria-labelledby="pulsar8" data-parent="#accordion">
+              <div class="card-body">
+                <p>Valor inicial "none" // Especifica qué valores tendrán las propiedades después de finalizar la animación (los de antes de ejecutarla, los del último fotograma de la animación o ambos).</p>
+                <h3>Valores</h3>
+                <p><code>none</code> La animación no aplicará los estilos antes ni después
+                  de su ejecución.</p>
+                <p><code>forwards</code> El objeto sobre el que se aplica la animación
+                  quedará con los valores y estilos que le aplique el último <code>keyframe</code>
+                  de la ejecución de la animación. El último valor dependerá del valor de <code>animation-direction</code>
+                  y<code> animation-iteration-count</code>.</p>
+                <p><code>backwards</code> La animación aplicará los valores definidos en el
+                  primer <code>keyframe</code> tan pronto como se aplique al objeto, y los
+                  retendrá durante el tiempo de <code>animation-delay</code>. El
+                  primer keyframe dependerá del valor de <code>animation-direction</code>.</p>
+                <p><code>both</code> La animación seguirá las reglas de las opciones <code>forwards</code>
+                  y <code>backwards</code>, extendiendo las propiedades de la animación en
+                  ambas direcciones.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.accordion -->
+      </div><!-- /.sintaxis -->
+      <br>
+      <div  id="bezier">
+        <h2>Aceleración y curva de bezier</h2>
+        <p>En esta sección veremos algunos ejemplo de curvas de béziers y su equivalente con valores predefinidos.</p>
+        <br>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-6">         
+            <div class="tarjeta">
+              <h4 class="text-center">Con animation-timing-function: ease</h4>
+              <div class="circulo-cont">
+                <div class="circulo ease">
+                  <i class="fa fa-star-o fa-3x"></i>                
+                </div>       
+              </div>
+              <br>
+              <p><code>ease</code> = Si la animación inicia lento, luego rápido para luego terminar lentamente. Con <code>cubic-bezier(0.25,0.1,0.25,1)</code></p>
+              <br>
+              <pre style="overflow: hidden;">
+          HTML
+          &lt;div class="circulo-cont">
+            &lt;div class="circulo">
+              &lt;i class="fa fa-star-o fa-3x">&lt;/i>                
+            &lt;/div>       
+          &lt;/div>
+
+          CSS
+          .circulo-cont {
+            border: solid 1px #ff5733;
+            width: 100px;
+          }
+
+          .circulo-cont:hover .circulo.a {
+            animation-play-state: paused;
+          }
+          
+          .circulo {
+            animation-name: circulo2;
+            animation-direction: alternate;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease;        
+            background: #62b2e5;
+            border-radius: 50%;
+            color: #f1f1f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            margin: 10px;
+            width: 100px;
+            position: relative;
+          }
+              </pre>
+            </div><!-- /.tarjeta -->
+            <br>
+            <p>Para saber más sobre valores predefinidos y cubic-bezier en CSS, puedes consultar esta web <a href="http://www.desarrollolibre.net/blog/tema/212/css/las-curvas-de-beziers-en-las-animaciones-css-caso-google-chrome#.WsTcPeb1r0p" target="_blank">http://www.desarrollolibre.net</a></p>
+            <p>Puedes experimentar facilmente con <code>cubic-bezier</code> en esta web <a href="http://cubic-bezier.com" target="_blank">http://cubic-bezier.com</a></p>
+            <br>
+          </div><!-- /.col -->
+
+          <div class="col-12 col-sm-12 col-md-6">
+
+            <div class="tarjeta">
+              <h4 class="text-center">Con animation-timing-function: ease-in</h4>
+              <div class="circulo-cont">
+                <div class="circulo ease-in">
+                  <i class="fa fa-smile-o fa-3x"></i>                
+                </div>       
+              </div>
+              <br>
+              <p><code>ease-in</code> = Si la animación inicia lento. Con <code>cubic-bezier(0.42,0,1,1)</code></p>
+            </div><!-- /.tarjeta -->
+
+            <div class="tarjeta">
+              <h4 class="text-center">Con animation-timing-function: ease-out</h4>
+              <div class="circulo-cont">
+                <div class="circulo ease-out">
+                  <i class="fa fa-cog fa-3x"></i>                
+                </div>       
+              </div>
+              <br>
+              <p><code>ease-out </code>= Si la animación termina lento. Con <code>cubic-bezier(0,0,0.58,1)</code></p>
+            </div><!-- /.tarjeta -->
+
+            <div class="tarjeta">
+              <h4 class="text-center">Con animation-timing-function: linear</h4>
+              <div class="circulo-cont">
+                <div class="circulo linear">
+                  <i class="fa fa-arrows-h fa-3x"></i>                
+                </div>       
+              </div>
+              <br>
+              <p><code>linear</code> = Si la animación es constante, sin variaciones de velocidad. Con <code>cubic-bezier(0,0,1,1)</code></p>
+            </div><!-- /.tarjeta -->
+
+            <div class="tarjeta">
+              <h4 class="text-center">Con animation-timing-function: <br> cubic-bezier(0,.21,.79,1.23)</h4>
+              <div class="circulo-cont">
+                <div class="circulo bezier-1">
+                  <i class="fa fa-soccer-ball-o fa-3x"></i>                
+                </div>       
+              </div>
+              <br>
+              <h4 class="text-center">Con animation-timing-function: cubic-bezier(1,.15,0,.86)</h4>
+              <div class="circulo-cont">
+                <div class="circulo bezier-2">
+                  <i class="fa fa-soccer-ball-o fa-3x"></i>                
+                </div>       
+              </div>
+            </div><!-- /.tarjeta -->
+
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.bezier -->
+      <br>
+      <div id="multiples">
+        <h2>Animaciones múltiples</h2>
+        <p>Podemos añadir múltiples animaciones a un mismo elemento.</p>
+        <p>Lo primero es agregar otra animación, para lo cual agregamos un nuevo <code>keyframes</code> a la propiedad <code>animation-name</code> , separando esto con una coma. Ejemplo: <code>animation-name: balon, rebote;</code></p>
+        <p>De la misma forma debemos separar con una coma los demás valores en cada una de las propiedades que tengan que ver con nuestra animación, y así quede customizada la nueva animación, sino hacemos esto todas las animaciones tomarán el valor declarado.</p>
+        <p><span class="text-danger">Importante:</span> se pueden aplicar hasta dos animaciones a un mismo elemento.</p>        
+        <br>
+        <div class="row">
+          <div class="col-12">         
+            <div class="tarjeta">
+              <div class="balon-cont">
+                <div class="balon">
+                  <i class="fa fa-soccer-ball-o fa-5x balon-icono"></i>
+                </div>       
+              </div>
+              <br>
+              <pre style="overflow: hidden;">
+                <div class="row">
+                <div class="col-12 col-sm-6">                
+                HTML
+                &lt;div class="balon-cont">
+                  &lt;div class="balon">
+                    &lt;i class="fa fa-soccer-ball-o
+                    fa-5x balon-icono">&lt;/i>
+                  &lt;/div>       
+                &lt;/div>
+
+                *******************************
+
+                @keyframes balon {
+                  0% {
+                    left: 0;
+                  }
+                  100% {
+                    left: calc(100% - 120px);
+                  }
+                }
+
+                @keyframes giro {
+                  0% {
+                    transform: rotate(0deg);    
+                  }
+                  100% {
+                    transform: rotate(360deg);    
+                  }
+                }
+
+                @keyframes rebote {
+                  0% {
+                    transform: translateY(0) scale(1,.9);
+                  }
+                  100% {
+                    transform: translateY(-50px);
+                  }
+                }
+                </div><!-- /.col -->
+                <div class="col-12 col-sm-6">
+        CSS
+        .balon-cont {
+          background: #7dc900;
+          height: 150px;
+          width: 100%;    
+        }
+
+        .balon-cont:hover .balon {
+          animation-play-state: paused;
+        }
+
+        .balon-cont:hover .balon-icono {
+          animation-play-state: paused;
+        }
+
+        .balon {
+          animation-name: balon, rebote;
+          animation-direction: alternate;
+          animation-duration: 3s, .3s;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear, ease;
+          background-color: #f1f1f1;
+          border-radius: 50%;
+          color: #444;
+          margin: 10px;
+          height: 90px;
+          width: 90px;
+          position: relative;
+        }
+
+        .balon-icono {
+          animation-name: giro;
+          animation-direction: alternate;
+          animation-duration: 3s;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+        }
+                  </div><!-- /.col -->
+                </div><!-- /.row -->
+              </pre>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.multiples -->
+      <br>
+      <div id="detectar">
+        <h2>Detectar eventos de animaciones CSS desde JS</h2>
+        <p>Usando Javascript podemos enlazar varias animaciones, de forma tal que cuando termine una comience otra de inmediato.</p>
+        <p>En el siguiente ejemplo el balón rebotará 6 veces antes de detenerse, previo haber disminuido su rebote.</p>        
+        <br>
+        <div class="row">
+          <div class="col-12">         
+            <div class="tarjeta">
+              <div class="balon-cont">
+                <div class="balon" id="balon">
+                  <i class="fa fa-soccer-ball-o fa-5x balon-icono"></i>
+                </div>       
+              </div>
+              <br>
+              <pre style="overflow: hidden;">
+                <div class="row">
+                <div class="col-12 col-sm-6">                
+                HTML
+                &lt;div class="balon-cont">
+                  &lt;class="balon" id="balon">
+                    &lt;i class="fa fa-soccer-ball-o
+                    fa-5x balon-icono">&lt;/i>
+                  &lt;/div>       
+                &lt;/div>
+
+                *******************************
+
+                @keyframes balon {
+                  0% {
+                    left: 0;
+                  }
+                  100% {
+                    left: calc(100% - 120px);
+                  }
+                }
+
+                @keyframes disminuir {
+                  0% {
+                    transform: translateY(0) scale(1,.9);
+                  }
+                  100% {
+                    transform: translateY(-2rem);
+                  }
+                }
+
+                @keyframes giro {
+                  0% {
+                    transform: rotate(0deg);    
+                  }
+                  100% {
+                    transform: rotate(360deg);    
+                  }
+                }
+
+                @keyframes rebote {
+                  0% {
+                    transform: translateY(0) scale(1,.9);
+                  }
+                  100% {
+                    transform: translateY(-50px);
+                  }
+                }
+                </div><!-- /.col -->
+                <div class="col-12 col-sm-6">
+
+        CSS
+        .balon-cont {
+          background: #7dc900;
+          height: 150px;
+          width: 100%;    
+        }
+
+        .balon-cont:hover .balon {
+          animation-play-state: paused;
+        }
+
+        .balon-cont:hover .balon-icono {
+          animation-play-state: paused;
+        }
+
+        .balon {
+          animation-name: balon, rebote;
+          animation-direction: alternate;
+          animation-duration: 3s, .3s;
+          animation-iteration-count: infinite,20;
+          animation-timing-function: linear, ease;
+          background-color: #f1f1f1;
+          border-radius: 50%;
+          color: #444;
+          margin: 10px;
+          height: 90px;
+          width: 90px;
+          position: relative;
+        }
+
+        .balon-icono {
+          animation-name: giro;
+          animation-direction: alternate;
+          animation-duration: 3s;
+          animation-iteration-count: 6;
+          animation-timing-function: linear;
+        }
+                  </div><!-- /.col -->
+            
+              *****************************************
+              Javascript
+
+              &lt;script type="text/javascript">
+                const $balon = document.getElementById('balon');
+                $balon.addEventListener('animationend', (event) => {
+                  if (event.animationName === 'rebote') {
+                    $balon.style.animationName = 'balon,disminuir';
+                    $balon.style.animationIterationCount = '6,20';
+                    $balon.style.animationTimingFunction = 'cubic-bezier(.24,.1,.38,.39), ease';         
+                  }
+                });     
+              &lt;/script>
+                </div><!-- /.row -->
+              </pre>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.detectar -->
+      <br>
+      <div id="propiedades">
+        <h2>Propiedades animables</h2>
+        <p>Ciertas propiedades de CSS pueden ser animadas usando CSS Animations o CSS Transitions. La animación significa que se puede hacer que sus valores cambien gradualmente durante un período de tiempo determinado.</p>
+        <p><b>Las propiedades animables son:</b></p>        
+        <div class="lista">
+          @include('./partials/animaciones_cont_lista1.html')          
+        </div>
+      </div><!-- /.propiedades -->
+      <br>
+      <div id="element-animate">
+        <h2>Javascript element.animate</h2>
+        <p>El método <code>Element.animate()</code> es un método abreviado para crear y reproducir una animación en un elemento. Devuelve la instancia creada de un objeto <code>Animation</code> .</p>
+        <p>Síntaxis: <code>element.animate(keyframes, options);</code></p>
+        <h3>Parámetros</h3>
+        <p><code>keyframes</code></p>
+        <p>Un Objeto formateado para representar un conjunto de fotogramas clave.</p>
+        
+        <div id="accordion2">
+          <div class="card">
+            <div class="card-header" id="pulsar1b">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#colapso1b" aria-expanded="false" aria-controls="colapso1b">
+                  Opciones (options)
+                </button>
+              </h5>
+            </div>
+
+            <div id="colapso1b" class="collapse show" aria-labelledby="pulsar1b" data-parent="#accordion">
+              <div class="card-body">
+                <p>Puede ser un entero representando la duración de la animación (en milisegundos), o un Objeto conteniendo una o más propiedades de sincronización:</p>
+                <p><code><b>id</b></code> (opcional): Una propiedad única para animar con la cual se hace referencia a la animación. </p>
+                <p><code><b>delay</b></code> (opcional): La cantidad de milisegundos para retrasar el inicio de la animación. El valor predeterminado es 0.</p>
+                <p><code><b>direction </b></code> (opcional): Si la animación se ejecuta hacia adelante (<code>normal</code>), hacia atrás (<code>reverse</code>), cambia de dirección después de cada iteración (<code>alternate</code>), o se ejecuta hacia atrás y cambia de dirección después de cada iteración (<code>alternate-reverse</code>). El valor predeterminado es "<code>normal</code>".</p>       
+                <p><code><b>duration</b></code> (opcional): La cantidad de milisegundos que tarda cada iteración de la animación en completarse. El valor predeterminado es 0. Aunque esto es técnicamente opcional, tenga en cuenta que su animación no se ejecutará si este valor es 0..</p>       
+                <p><code><b>easing</b></code> (opcional): La velocidad de la animación cambia con el tiempo. Acepta los valores predefinidos "<code>linear</code>", "<code>ease</code>", "<code>ease-in</code>", "<code>ease-out</code>" y "<code>ease-in-out</code>", o un valor personalizado como "<code>cubic-bezier ( 0.42, 0, 0.58, 1)</code> ". El valor predeterminado es "<code>linear</code>".</p>       
+                <p><code><b>endDelay</b></code> (opcional): La cantidad de milisegundos para retrasar después del final de una animación. Esto es principalmente útil al secuenciar animaciones basadas en el tiempo de finalización de otra animación. El valor predeterminado es 0.</p>       
+                <p><code><b>fill</b></code> (opcional): Indica si los efectos de la animación deben ser reflejados por los elementos antes de la reproducción ("<code>backwards</code>"), retenidos después de que la animación haya terminado de reproducirse ("<code>forwards</code>"), o ambos. El valor predeterminado es "<code>none</code>".</p>       
+                <p><code><b>iterationStart</b></code> (opcional): Describe en qué punto de la iteración debe comenzar la animación. 0.5 indicaría comenzar a la mitad de la primera iteración, por ejemplo, y con este valor establecido, una animación con 2 iteraciones terminaría a la mitad de una tercera iteración. El valor predeterminado es 0.0.</p>
+                <p><code><b>iterations</b></code> (opcional): La cantidad de veces que la animación debe repetirse El valor predeterminado es 1, y también puede tomar un valor de <code>Infinity</code> para que se repita mientras exista el elemento.</p>
+                <br>
+                <h3>Opciones Futuras</h3>
+                <p>Las siguientes opciones actualmente no se han enviado a todos los sitios, pero se añadirán en un futuro próximo.</p>
+                <p><code><b>composite</b></code> Determina como se combinan los valores entre esta animación y otra, animaciones independientes sin especificar la composición de su propia operación.</p>
+                <p> <code><b>iterationComposite</b></code> Determina como se construyen los valores de una iteración a otra en esta animación. Se puede configurar para acumular o reemplazar.</p>
+                <p><code><b>spacing</b></code> Determina como los keyframes sin compensación temporal deben ser distribuidos durante la duración de la animación. 
+                <ul>
+                  <li>distribuir las posiciones de los keyframes para que la diferencia entre el anterior y el; posterior estén compensadas por igual , lo que es como decir, sin ninguna compensación, esto distribuirá equitativamente los keyframes a traves del tiempo de ejecución.</li>
+                  <li>situar las posiciones de los keyframes de manera que; igualen la diferencia entre los siguientes valores de una propiedad especifica sincronizada; , lo que es como decir,; que los keyframes estén más espaciados cuanto mayores sean los valores de sus propiedades.</li>
+                </ul>
+              </div>
+            </div>
+          </div><!-- /.card -->
+        </div><!-- /.accordion2 -->               
+        <br>
+        <div class="row">
+          <div class="col-12">         
+            <div class="tarjeta">
+              
+              <div class="bola-cont">
+                <div class="bola" id="bola"></div>       
+              </div>
+
+              <br>
+              <pre style="overflow: hidden;">
+                <div class="row">
+                  <div class="col-12 col-sm-6">                
+                  HTML
+                  &lt;div class="bola-cont">
+                    &lt;div class="bola" id="bola">&lt;/div>       
+                  &lt;/div>
+
+                  *******************************
+
+                  Javascript
+
+                  const $bola = document.getElementById('bola');
+
+                  $bola.animate([
+                    // from
+                    {
+                      left: '0%'
+                    },
+                    // to
+                    {
+                      left: 'calc(100% - 12rem)'          
+                    }
+                    ],{
+                      duration:2500,
+                      delay: 500,
+                      direction: 'alternate',
+                      easing: 'ease',
+                      iterations: Infinity,
+                    });
+                  </div><!-- /.col -->
+                  <div class="col-12 col-sm-6">
+                  CSS
+                  .bola-cont {
+                    background-color: #cacaca;
+                    padding: 10px;
+                    width: 100%;
+                  }
+
+                  .bola {
+                    background-color: #62b2e5;
+                    border-radius: 50%;
+                    height: 100px;
+                    width: 100px;
+                    position: relative;
+                  }
+                  </div><!-- /.col -->
+                </div><!-- /.row -->
+              </pre>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->        
+      </div><!-- /.element-animate -->
+      <br>
+      <div id="control">
+        <h2>Controlar animaciones</h2>
+        <p>Aplicando Javascript podemos crear controles para nuestras animaciones, en este ejemplo vemos algunos botones que se usan para este fin.</p>
+        <div class="row">
+          <div class="col-12">         
+            <div class="tarjeta">
+              
+              <div class="bola-cont">
+                <div class="bola" id="bola2"></div>
+                <br>
+                <center>
+                  <div class="btn-group" role="group" aria-label="Controles">
+                    <button type="button" class="btn btn-secondary" id="play"><i class="fa fa-play fa-lg"></i></button>
+                    <button type="button" class="btn btn-secondary" id="pause"><i class="fa fa-pause fa-lg"></i></button>
+                    <button type="button" class="btn btn-secondary" id="stop"><i class="fa fa-stop fa-lg"></i></button>
+                    <button type="button" class="btn btn-secondary" id="reverse"><i class="fa fa-backward fa-lg"></i></button>
+                  </div>
+                </center>      
+              </div>
+              <br>
+              <pre style="overflow: hidden;">
+               
+                HTML
+                &lt;div class="bola-cont">
+                  &lt;div class="bola" id="bola2">&lt;/div>
+                  &lt;br>
+                  &lt;center>
+                    &lt;div class="btn-group" role="group" aria-label="Controles">
+                      &lt;button type="button" class="btn btn-secondary" id="play">
+                      &lt;i class="fa fa-play fa-lg">&lt;/i>&lt;/button>
+                      &lt;button type="button" class="btn btn-secondary" id="pause">
+                      &lt;i class="fa fa-pause fa-lg">&lt;/i>&lt;/button>
+                      &lt;button type="button" class="btn btn-secondary" id="stop">
+                      &lt;i class="fa fa-stop fa-lg">&lt;/i>&lt;/button>
+                      &lt;button type="button" class="btn btn-secondary" id="reverse">
+                      &lt;i class="fa fa-backward fa-lg">&lt;/i>&lt;/button>
+                    &lt;/div>
+                  &lt;/center>      
+                &lt;/div>
+
+
+                CSS
+                .bola-cont {
+                  background-color: #cacaca;
+                  padding: 10px;
+                  width: 100%;
+                }
+
+                .bola {
+                  background-color: #62b2e5;
+                  border-radius: 50%;
+                  height: 100px;
+                  width: 100px;
+                  position: relative;
+                }
+
+
+                Javascript
+
+                const $bola2 = document.getElementById('bola2');
+
+                const animation = $bola2.animate([
+                  // from
+                  {
+                    left: '0%'
+                  },
+                  // to
+                  {
+                    left: 'calc(100% - 12rem)'          
+                  }
+                  ],{
+                    duration:3000,
+                    delay: 500,
+                    direction: 'normal',
+                    easing: 'ease',
+                    iterations: Infinity,
+                  })
+
+                const $playButton = document.getElementById('play');
+                const $pauseButton = document.getElementById('pause');
+                const $stopButton = document.getElementById('stop');
+                const $reverseButton = document.getElementById('reverse');
+
+                $playButton.addEventListener('click', (event) => {
+                  animation.play();
+                });
+                $pauseButton.addEventListener('click', (event) => {
+                  animation.pause();
+                });
+                $stopButton.addEventListener('click', (event) => {
+                  animation.cancel();
+                });
+                $reverseButton.addEventListener('click', (event) => {
+                  animation.reverse();
+                });
+              </pre>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->        
+      </div><!-- /.control -->
+      <br>
+      <div id="logo">
+        <h2>Animando un logo</h2>
+        <p>Aplicando Javascript podemos crear controles para nuestras animaciones, en este ejemplo vemos algunos botones que se usan para este fin.</p>
+        <div class="row">
+          <div class="col-12">         
+            <div class="tarjeta">
+              
+              <div class="logo-cont">
+                <div class="logo" id="logo">
+                  @include('./partials/isologo.html')                   
+                </div><!-- /.logo -->   
+              </div><!-- /.logo-cont -->
+              <br>
+              <pre style="overflow: hidden;">
+                <div class="row">
+                  <div class="col-12 col-md-6">
+                  HTML
+                  &lt;div class="logo-cont">
+                    &lt;div class="logo" id="logo">
+                      Aquí hemos incluido un
+                      logotipo en formato SVG 
+                      pero dentro del HTML para 
+                      poder manipular
+                      sus fragmentos con CSS.                   
+                    &lt;/div>   
+                  &lt;/div>
+
+
+                  CSS
+                  .logo-cont {
+                    background-color: #222;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 30px;
+                    height: 50vh;
+                    width: 100%;
+                  }
+
+                  #isologo {
+                    animation-name: isologo;
+                    animation-duration: 6s;
+                    animation-iteration-count: infinite;      
+                  }
+
+                  #separador {
+                    animation-name: separador;
+                    animation-duration: 6s;
+                    animation-iteration-count: infinite;      
+                  }
+                  #texto {
+                    animation-name: texto;
+                    animation-duration: 6s;
+                    animation-iteration-count: infinite;      
+                  }                    
+                  </div>
+
+                  <div class="col-12 col-md-6">
+
+                  Keyframes
+
+                  @keyframes isologo {
+                    0% {
+                      opacity: 0;
+                      transform: scale(0.3) rotate(0deg); 
+                    }
+                    30% {
+                      opacity: 1;
+                      transform: scale(1.3) rotate(360deg);
+                    }
+                    80% {
+                      opacity: 1;
+                      transform: scale(1) rotate(360deg);
+                    }
+                    100% {
+                      opacity: 0;
+                      transform: scale(0.3) rotate(0deg);   
+                    }
+                  }
+                  @keyframes separador {
+                    0% {
+                      opacity: 1;   
+                    }
+                    100% {
+                      opacity: 0;   
+                    }
+                  }
+                  @keyframes texto {
+                    0% {
+                      opacity: 0;   
+                    }
+                    45% {
+                      opacity: 0;   
+                    }
+                    75% {
+                      opacity: 1;
+                    }
+                    100% {
+                      opacity: 1;   
+                    }
+                  }
+                  </div>                  
+                </div>
+              </pre>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->        
+      </div><!-- /.logo -->
+      <br>  
+    </div><!-- /.container -->    
+  </div><!-- /. CONTENIDO -->
+
+  <script type="text/javascript">
+
+    // Para concatenar dos animaciones
+    const $balon = document.getElementById('balon');
+    $balon.addEventListener('animationend', (event) => {
+      if (event.animationName === 'rebote') {
+        $balon.style.animationName = 'balon,disminuir';
+        $balon.style.animationIterationCount = '6, 20';
+        $balon.style.animationTimingFunction = 'cubic-bezier(.24,.1,.38,.39), ease';          
+      }
+    })
+
+    // Para hacer una animación con JS
+    const $bola = document.getElementById('bola');
+    $bola.animate([
+      // from
+      {
+        left: '0%'
+      },
+      // to
+      {
+        left: 'calc(100% - 12rem)'          
+      }
+      ],{
+        duration:2500,
+        delay: 500,
+        direction: 'alternate',
+        easing: 'ease',
+        iterations: Infinity,
+      })
+
+    // Para controlar la animación con JS
+    const $bola2 = document.getElementById('bola2');
+    const animation = $bola2.animate([
+      // from
+      {
+        left: '0%'
+      },
+      // to
+      {
+        left: 'calc(100% - 12rem)'          
+      }
+      ],{
+        duration:3000,
+        delay: 500,
+        direction: 'normal',
+        easing: 'ease',
+        iterations: Infinity,
+      })
+
+    const $playButton = document.getElementById('play');
+    const $pauseButton = document.getElementById('pause');
+    const $stopButton = document.getElementById('stop');
+    const $reverseButton = document.getElementById('reverse');
+
+    $playButton.addEventListener('click', (event) => {
+      animation.play();
+    });
+    $pauseButton.addEventListener('click', (event) => {
+      animation.pause();
+    });
+    $stopButton.addEventListener('click', (event) => {
+      animation.cancel();
+    });
+    $reverseButton.addEventListener('click', (event) => {
+      animation.reverse();
+    });
+  </script>

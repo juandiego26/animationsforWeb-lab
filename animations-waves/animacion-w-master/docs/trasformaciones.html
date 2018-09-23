@@ -1,0 +1,721 @@
+<!doctype html>
+<html class="no-js" lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animaciones para la Web</title>
+  <meta name="description" content="Las animaciones CSS3 permiten dinamizar la transición entre un estilo CSS y otro. Las animaciones constan de dos componentes: un estilo que describe la animación CSS y un conjunto de fotogramas que indican su estado inicial y final, así como posibles puntos intermedios en la misma. Este ejercicio busca reforzar a través de la prática estos conocimientos fundamentales.">
+  <link rel="shortcut icon" href="assets/img/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/app.min.css">
+</head>
+
+<body>
+	<!-- /////// Botón para ir al principio -->
+	<a class="hide-for-small-only" href="#inicio">
+	  <i class="fa fa-chevron-circle-up fa-2x ir-arriba"></i>
+	</a>
+	<!-- */Botón para ir al principio -->  
+  <!-- ********** BARRA DE NAVEGACIÓN -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">    
+      <a class="navbar-brand" id="logo-nav" href="index.html">Animaciones</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio <span class="sr-only">Inicio</span></a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="transiciones.html">Transiciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="trasformaciones.html">Transformaciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="animaciones.html">Animaciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="animaciones2.html">Aplicaciones</a>
+          </li>
+        </ul>
+      </div>
+    </div><!-- /.container -->
+  </nav>
+  <!-- /. BARRA DE NAVEGACIÓN -->  
+  <!-- ********** CONTENIDO -->
+  <div id="trasformaciones_cont">
+  	<div class="container">
+      <h1 class="text-center">Tranformaciones</h1>
+      <p>Las transformaciones CSS3 le permiten trasladar, rotar, escalar y sesgar elementos. Una transformación es un efecto que permite un cambio de elemento de forma, tamaño y posición. CSS3 admite transformaciones 2D y 3D.</p>
+      <p>Se deben usar las siguientes unidades:
+        <ul>
+          <li><code>deg</code>, que representa un ángulo en grados. Un círculo completo equivale a 360deg. Ejemplos: 0deg, 90deg, 360deg.</li>
+          <li><code>grad</code>, que representa un ángulo en grado centesimal. Un circulo completo equivale a 400grad. Ejemplos: 0grad, 100grad, 400grad.</li>
+          <li><code>rad</code>, que representa un ángulo en radianes. Un círculo completo equivale a 2π radianes, que se aproxima a 6.2832rad. 1rad es 180/π grados. Ejemplos: 0rad, 1.0708rad, 6.2832rad.</li>
+          <li><code>turn</code>, que representa el número de vueltas del ángulo. Un círculo completo equivale a 1turn. Ejemplos: 0turn, 0.25turn, 1turn.</li>
+        </ul>
+      </p>
+      <!-- *********** NAVEGACION INTERNA -->
+      <ul class="nav nav-tabs justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" href="#rotate">Rotación</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#translate">Traslación</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#escala">Escala</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#sesgo">Sesgo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#punto">Punto de transformación</a>
+        </li>
+      </ul>
+      <!-- NAVEGACION INTERNA ************* -->
+
+      <div id="rotate">
+        <h2>Transformaciones de Rotación</h2>
+        <p><code>rotate()</code> Define una transformación para mover un elemento alrededor de un punto fijo sin deformarlo. La cantidad de movimiento se define mediante un ángulo. Si es positivo, el movimiento serán en el sentido del reloj y, si es negativo, en sentido contrario al movimiento del reloj. Una rotación de 180° se llama punto de reflexión. </p>
+        <br>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-6">         
+            <div class="tarjeta">
+              <center>
+                <div class="cuadro-cont">
+                  <div class="cuadro">
+                    Hola Mundo!                
+                  </div>       
+                </div>
+              </center>
+              <br>
+              <pre>
+              HTML
+              &lt;center>
+                &lt;div class="cuadro-cont">
+                  &lt;div class="cuadro">
+                    Hola Mundo!                
+                  &lt;/div>       
+                &lt;/div>
+              &lt;/center>
+
+              CSS
+              .cuadro-cont {
+                border: solid 1px #ff5733;
+                width: 240px;
+              }
+
+              .cuadro-cont:hover .cuadro {
+                transform: rotate(45deg);
+                transition:.4s;
+              }
+
+              .cuadro {
+                background-color: #7dc900;
+                color: #f1f1f1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 20px;
+                height: 200px;
+                width: 200px;
+                transition:.4s;
+              }
+              </pre>
+            </div><!-- /.tarjeta -->
+
+            <div class="tarjeta">
+              <h3>Cambio en la dirección del giro</h3><br>
+              <center>
+                <div class="cuadro-cont">
+                  <div class="cuadro inverso">
+                    Yo giro en sentido contrario!                
+                  </div>       
+                </div>
+              </center>
+              <br>
+              <code>
+                transform: rotate(-45deg);
+              </code>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+
+          <div class="col-12 col-sm-12 col-md-6">
+            <div class="tarjeta">
+              <h3>Rotación en los ejes X, Y y Z</h3><br>
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="cont-img">
+                      <img class="imagen x" src="assets/img/lis.svg">                
+                    </div>
+                    <code>transform: rotateX(180deg)</code>              
+                  </center>                
+                </div>
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="cont-img">
+                      <img class="imagen y" src="assets/img/lis.svg">                
+                    </div>
+                    <code>transform: rotateY(180deg)</code>
+                    <br><br>             
+                  </center>                
+                </div>
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="cont-img">
+                      <img class="imagen z" src="assets/img/lis.svg">                
+                    </div>
+                    <code>transform: rotateZ(8turn);
+                          transition: 10s;</code>              
+                  </center>                
+                </div>
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="cont-img">
+                      <img class="imagen xz" src="assets/img/lis.svg">                
+                    </div>
+                    <code>transform: rotateX(45deg) rotateZ(45deg)</code>              
+                  </center>                
+                </div>
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="cont-img">
+                      <img class="imagen yz" src="assets/img/lis.svg">                
+                    </div>
+                    <code>transform: rotateY(45deg) rotateZ(45deg)</code>              
+                  </center>                
+                </div>
+              </div>        
+            </div><!-- /.tarjeta -->
+
+            <div class="tarjeta">
+              <h3>Rotación en 3D</h3><br>
+              <center>
+                <div class="cont-img">
+                  <img class="imagen td" src="assets/img/lis.svg">                
+                </div>
+                <code>transform: rotate3d(x, y, z, rotate)</code><br>
+                <code>transform: rotate3d(1, 1, 1, -45deg)</code>              
+              </center>
+              <br>
+              <center>
+                <div class="cont-img">
+                  <img class="imagen td b" src="assets/img/lis.svg">                
+                </div>
+                <code>transform: rotate3d(1, 0, 1, 60deg)</code>              
+              </center>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.rotate -->
+      <br>
+      <div  id="translate">
+        <h2>Transformaciones de Traslación</h2>
+        <p><code>translate()</code> Define una transformación para recoloca un elemento en el eje horizontal y/o vertical. Su resultado es de tipo transform-function.</p>
+        <p><b>Nota:</b> la propiedad <code>perspective</code> permite creara un canvas en 3D para nuestros movimientos de traslación. <br> Con <code>perspective-origin</code> podemos definir el origen de esta perspectiva. Debe ser asignado al elemento padre del que se desea mover.</p>
+        <br>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-6">         
+            <div class="tarjeta">
+              <center>
+                <div class="circulo-cont">
+                  <div class="circulo a">
+                    Hola Mundo!                
+                  </div>       
+                </div>
+              </center>
+              <br>
+              <pre>
+              HTML
+              &lt;center>
+                &lt;div class="circulo-cont">
+                  &lt;div class="circulo a">
+                    Hola Mundo!                
+                  &lt;/div>       
+                &lt;/div>
+              &lt;/center>
+
+              CSS
+              .circulo-cont {
+                border: solid 1px #ff5733;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 150px;
+                width: 150px;
+              }
+
+              .circulo-cont:hover .circulo.a {
+                transform: translate(100px);
+                transition: 1.5s;
+              }
+
+              .circulo {
+                background: #62b2e5;
+                border-radius: 50%;
+                color: #f1f1f1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 98%;
+                width: 98%;
+                max-height: 140px;
+                max-width: 140px; 
+                transition: .5s;
+              }
+              </pre>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+
+          <div class="col-12 col-sm-12 col-md-6">
+            <div class="tarjeta">
+              <h3>Traslación en los ejes X, Y y Z</h3><br>
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="circulo-cont">
+                      <div class="circulo ab">Doble Movimiento</div>                
+                    </div>
+                    <code>transform: translate(100px, 100px);</code>              
+                  </center>                
+                </div>
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="circulo-cont">
+                      <div class="circulo x">Sólo Eje X</div>                
+                    </div>
+                    <code>transform: translateX(100px);</code>              
+                  </center>               
+                </div>
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="circulo-cont">
+                      <div class="circulo y">Sólo Eje Y</div>                
+                    </div>
+                    <code>transform: translateY(-100px);</code>              
+                  </center>               
+                </div>
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="circulo-cont">
+                      <div class="circulo z">Sólo Eje Z</div>                
+                    </div>
+                    <code>transform: translateZ(80px);</code>              
+                  </center>         
+                </div>
+              </div><!-- /.row -->        
+            </div><!-- /.tarjeta -->
+
+            <div class="tarjeta">
+              <h3>Traslación en 3D</h3><br>
+              <center>
+                <div class="circulo-cont">
+                  <div class="circulo td">Movimiento en 3D</div>                
+                </div>
+                <code>translate3d(30px,30px,30px);</code>              
+              </center>
+              <br>
+              <center>
+                <div class="circulo-cont">
+                  <div class="circulo td b">Movimiento en 3D</div>                
+                </div>
+                <code>translate3d(-30px,-30px,30px);</code>              
+              </center>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.translate -->
+      <br>
+      <div  id="escala">
+        <h2>Transformaciones de Escala</h2>
+        <p><code>scale()</code> Define una transformación que modifica el tamaño de un elemento en el plano 2D. Debido a que la cantidad de escalado está definida por un vector, puede cambiar el tamaño de la dimensiones horizontal y vertical a diferentes escalas.</p>
+        <p>Cuando un valor de coordenadas está fuera del rango [-1, 1], el elemento crece a lo largo de esa dimensión; cuando está dentro, se encoge. Si es negativo, el resultado es un reflejo de punto en esa dimensión. Un valor de 1 no tiene ningún efecto.</p>
+        <p>La función <code>scale()</code> solo se escala en 2d. Para escalar en 3D se utiliza la función <code>scale3d()</code> en su lugar.</p>
+        <br>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-6">         
+            <div class="tarjeta">
+              <center>
+                <div class="circulo-cont">
+                  <div class="circulo a">
+                    Hola Mundo!                
+                  </div>       
+                </div>
+              </center>
+              <br>
+              <pre>
+              HTML
+              &lt;center>
+                &lt;div class="circulo-cont">
+                  &lt;div class="circulo a">
+                    Hola Mundo!                
+                  &lt;/div>       
+                &lt;/div>
+              &lt;/center>
+
+              CSS
+              .circulo-cont {
+                border: solid 1px #ff5733;
+                border-radius: 25%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 150px;
+                width: 150px;
+              }
+
+              .circulo-cont:hover .circulo.a {
+                transform: scale(1.14);
+                transition: 1.5s;
+              }
+
+              .circulo {
+                background: #7dc900;
+                border-radius: 25%;
+                color: #f1f1f1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 98%;
+                width: 98%;
+                max-height: 140px;
+                max-width: 140px; 
+                transition: .5s;
+              }
+              </pre>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+
+          <div class="col-12 col-sm-12 col-md-6">
+            <div class="tarjeta">
+              <h3>Escala en los ejes X, Y y Z</h3><br>
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="circulo-cont">
+                      <div class="circulo ab">Doble Escala</div>                
+                    </div>
+                    <code>transform: scale(1.14,.9);</code>              
+                  </center>                
+                </div>
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="circulo-cont">
+                      <div class="circulo x">Sólo Eje X</div>                
+                    </div>
+                    <code>transform: scaleX(1.5);</code>              
+                  </center>               
+                </div>
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="circulo-cont">
+                      <div class="circulo y">Sólo Eje Y</div>                
+                    </div>
+                    <code>transform: scaleY(1.5);</code>              
+                  </center>               
+                </div>
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="circulo-cont">
+                      <div class="circulo z">Sólo Eje Z</div>                
+                    </div>
+                    <code>transform: perspective(100px) translateZ(-25px);</code>              
+                  </center>         
+                </div>
+              </div><!-- /.row -->        
+            </div><!-- /.tarjeta -->
+
+            <div class="tarjeta">
+              <h3>Traslación en 3D</h3><br>
+              <center>
+                <div class="circulo-cont">
+                  <div class="circulo td">Escala <br> en 3D</div>                
+                </div>
+                <code>transform: perspective(0) scale3d(.5,.5,-1);</code>              
+              </center>
+              <br>
+              <center>
+                <div class="circulo-cont">
+                  <div class="circulo td b">Escala <br> en 3D</div>                
+                </div>
+                <code>transform: perspective(0) scale3d(2,2,-1);</code>              
+              </center>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.escala -->
+      <br>
+      <div id="sesgo">
+        <h2>Transformaciones de Sesgo</h2>
+        <p><code>skew()</code> Define una transformación de sesgo 2D a lo largo de los ejes X y el eje Y.</p>
+        <p>Esta transformación es un mapeo de corte (transvección) que distorsiona cada punto dentro de un elemento por un cierto ángulo en las direcciones horizontal y vertical. Las coordenadas de cada punto se modifican por un valor proporcional al ángulo especificado y la distancia al origen; por lo tanto, cuanto más lejos del origen se encuentre un punto, mayor será el valor agregado.</p>        
+        <br>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-6">         
+            <div class="tarjeta">
+              <center>
+                <div class="cuadro-cont">
+                  <div class="cuadro">
+                    Hola Mundo!                
+                  </div>       
+                </div>
+              </center>
+              <br>
+              <pre>
+              HTML
+              &lt;center>
+                &lt;div class="cuadro-cont">
+                  &lt;div class="cuadro">
+                    Hola Mundo!                
+                  &lt;/div>       
+                &lt;/div>
+              &lt;/center>
+
+              CSS
+              .cuadro-cont {
+                border: solid 1px #62B2E5;
+                width: 240px;
+              }
+
+              .cuadro-cont:hover .cuadro {
+                transform: skew(10deg);
+                transition:.4s;
+              }
+
+              .cuadro {
+                background-color: #FF5733;
+                color: #f1f1f1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 20px;
+                height: 200px;
+                width: 200px;
+                transition:.4s;
+              }
+              </pre>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+
+          <div class="col-12 col-sm-12 col-md-6">
+
+            <div class="tarjeta">
+              <h3>Cambio en la dirección del giro</h3><br>
+              <center>
+                <div class="cuadro-cont">
+                  <div class="cuadro inverso">
+                    Yo me sesgo en <br> sentido contrario!                
+                  </div>       
+                </div>
+              </center>
+              <br>
+              <code>
+                transform: skew(-10deg);
+              </code>
+            </div><!-- /.tarjeta -->
+
+            <div class="tarjeta">
+              <h3>Sesgo en los ejes X, Y y Z</h3><br>
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="cont-img">
+                      <img class="imagen x" src="assets/img/lis.svg">                
+                    </div>
+                    <code>transform: skewX(20deg)</code>              
+                  </center>                
+                </div>
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="cont-img">
+                      <img class="imagen y" src="assets/img/lis.svg">                
+                    </div>
+                    <code>transform: skewY(20deg)</code>
+                    <br><br>             
+                  </center>                
+                </div>
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="cont-img">
+                      <img class="imagen xy" src="assets/img/lis.svg">                
+                    </div>
+                    <code>transform: skewX(-10deg) skewY(-10deg)</code>              
+                  </center>                
+                </div>
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="cont-img">
+                      <img class="imagen t" src="assets/img/lis.svg">                
+                    </div>
+                    <code>transform: skew(.05turn)</code>              
+                  </center>                
+                </div>
+              </div>
+              <br>    
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.sesgo -->
+      <br>
+      <div id="punto">
+        <h2>Punto de transformación</h2>
+        <p><code>transform-origin</code> - Especifica la posición de origen que se usará para la transformación. Por defecto es el lado superior izquierdo del elemento. Esta posición es usada por varias transformaciones como rotar, escalar o torcer ya que necesitan de este punto especifico como parámetro.</p>
+        <br>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-6">         
+            <div class="tarjeta">
+              <center>
+                <div class="cuadro-cont">
+                  <div class="cuadro">
+                    Hola Mundo!              
+                  </div>       
+                </div>
+              </center>
+              <br>
+              <pre>
+              HTML
+              &lt;center>
+                &lt;div class="cuadro-cont">
+                  &lt;div class="cuadro">
+                    Hola Mundo!                
+                  &lt;/div>       
+                &lt;/div>
+              &lt;/center>
+
+              CSS
+              .cuadro-cont {
+                border: solid 1px #ff5733;
+                width: 240px;
+              }
+
+              .cuadro-cont:hover .cuadro {
+                transform: rotateZ(45deg);
+                transform-origin: top left;
+                transition:.4s;
+              }
+
+              .cuadro {
+                background-color: #7dc900;
+                color: #f1f1f1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 20px;
+                height: 200px;
+                width: 200px;
+                transition:.4s;
+              }
+              </pre>
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+
+          <div class="col-12 col-sm-12 col-md-6">
+
+            <div class="tarjeta">
+              <h3>Cambio en la dirección del giro</h3><br>
+              <center>
+                <div class="cuadro-cont">
+                  <div class="cuadro inverso">
+                    Yo giro en sentido contrario!                
+                  </div>       
+                </div>
+              </center>
+              <br>
+              <code>
+                transform: rotate(-45deg);
+              </code>
+            </div><!-- /.tarjeta -->
+            
+            <div class="tarjeta">
+              <h3>Rotación en los ejes X, Y y Z</h3><br>
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="cont-img">
+                      <img class="imagen x" src="assets/img/escudo.svg">                
+                    </div>
+                    <code>transform: rotateX(180deg);
+                          transform-origin: bottom;</code>              
+                  </center>                
+                </div>
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="cont-img">
+                      <img class="imagen y" src="assets/img/escudo.svg">                
+                    </div>
+                    <code>transform: rotateY(180deg);
+                          transform-origin: left;
+                    </code>
+                    <br><br>             
+                  </center>                
+                </div>
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="cont-img">
+                      <img class="imagen z1" src="assets/img/escudo.svg">                
+                    </div>
+                    <code>transform: rotateZ(4turn);
+                    transform-origin: right top;
+                    transition: 8s;</code>              
+                  </center>                
+                </div>
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="cont-img">
+                      <img class="imagen z2" src="assets/img/escudo.svg">                
+                    </div>
+                    <code>transform: rotateZ(180deg);
+                    transform-origin: left top;
+                    transition: 1.5s linear;</code>              
+                  </center>                
+                </div>
+                <div class="col-12 col-md-6">
+                  <center>
+                    <div class="cont-img">
+                      <img class="imagen xz" src="assets/img/escudo.svg">                
+                    </div>
+                    <code>transform: rotateX(35deg) rotateZ(35deg);
+                          transform-origin: right top;
+                          transition: 1.5s;</code>              
+                  </center>                
+                </div>
+              </div>        
+            </div><!-- /.tarjeta -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.punto -->
+  	</div><!-- /.container -->    
+  </div><!-- /. CONTENIDO -->  
+********** FOOTER -->
+<div class="footer" id="footer">
+    <div id="footer-social">
+      <!-- Para ver en la we https://caballero73.github.io/animacion-w/ -->
+      <a href="https://github.com/Caballero73/animacion-w" target="_blank"><div class="iconos">
+        <i class="fa fa-github fa-lg"></i>
+      </div></a>
+      <a href="https://www.linkedin.com/in/enrique-valerio-6b347b126/" target="_blank"><div class="iconos">
+        <i class="fa fa-linkedin fa-lg"></i>
+      </div></a>
+    </div>
+    <p class="autor text-center"><span class="fa fa-cc"></span><span> &nbsp; Enrique J. Valerio G. 2018 </span><span> &nbsp; | &nbsp; </span>
+    <span> Powered by  <span class="">Enrique Valerio</span> </span></p>
+</div>
+<!-- /. FOOTER
+    <!-- ************* CORE JS -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/typed.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/wow.js"></script>
+    <script src="assets/js/app.min.js"></script>    
+</body>
+</html>

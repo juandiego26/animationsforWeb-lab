@@ -1,0 +1,21 @@
+/*Hoja de Estilo
+* Desarrollada para el proyecto: Animaciones en la Web
+* Por: Enrique Valerio
+* Marzo 2018
+*/
+
+@import 'variables.css';
+@import 'mediaquery.css';
+@import 'tipografia.css';
+@import 'footer.css';
+@import 'index_cont.css';
+@import 'animaciones_cont.css';
+@import 'animaciones2_cont.css';
+@import 'transiciones_cont.css';
+@import 'trasformaciones_cont.css';
+@import 'keyframes.css';
+@import 'general.css';
+
+/******************************
+MEDIA-QUERIES
+*******************************/

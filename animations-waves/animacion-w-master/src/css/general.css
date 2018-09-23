@@ -1,0 +1,78 @@
+/******************************
+ESTILOS GENERALES: general.css;
+*******************************/
+html {
+  font-size: 10px;
+}
+body {
+  font-family: serif;
+  font-size: responsive 1.5rem 1.8rem ;
+  font-range: 420px 1280px;
+}
+button {
+  font-family: sans-serif;
+}
+code {
+  color: var(--text-color);
+  text-align: left !important;
+  font-size: responsive 1.6rem 1.8rem;
+}
+
+h1,h2,h3,h4,h5,h6,a {
+  font-family: 'ubuntu_reg',sans-serif;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+pre {
+  transform: translateX(-12rem);
+  width: 100%;
+}
+#accordion button, #accordion2 button, #control button {
+  font-size: 1.8rem;
+}
+.dropdown-item {
+  font-size: responsive 1.4rem 1.6rem;
+
+  a {
+    color: var(--text-color);
+  }
+}
+.ir-arriba {
+  border-radius: 0.4rem;
+  display:none;
+  padding:0.7rem;
+  background:blue;
+  color:#fff;
+  cursor:pointer;
+  position: fixed;
+  bottom:2rem;
+  right:1rem;
+  transition: var(--tra50);
+  z-index: 100;
+}
+.ir-arriba:hover {
+  background: red;
+  transition: var(--tra50);
+}
+.lista-sb {
+  list-style-type: none;
+  margin: 0;
+  padding: 0
+}
+#logo-nav {
+  font-family: 'ubuntu_reg', sans-serif;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 1px #004A99;
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+}
+.tarjeta {
+  border-radius: 10px;
+  border: solid 1px var(--ligth-color);
+  margin-bottom: 1rem;
+  padding: 3rem;
+}
+/* /.ESTILOS GENERALES */

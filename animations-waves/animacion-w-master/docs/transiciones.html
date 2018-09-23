@@ -1,0 +1,156 @@
+<!doctype html>
+<html class="no-js" lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animaciones para la Web</title>
+  <meta name="description" content="Las animaciones CSS3 permiten dinamizar la transición entre un estilo CSS y otro. Las animaciones constan de dos componentes: un estilo que describe la animación CSS y un conjunto de fotogramas que indican su estado inicial y final, así como posibles puntos intermedios en la misma. Este ejercicio busca reforzar a través de la prática estos conocimientos fundamentales.">
+  <link rel="shortcut icon" href="assets/img/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/app.min.css">
+</head>
+
+<body>
+	<!-- /////// Botón para ir al principio -->
+	<a class="hide-for-small-only" href="#inicio">
+	  <i class="fa fa-chevron-circle-up fa-2x ir-arriba"></i>
+	</a>
+	<!-- */Botón para ir al principio -->  
+  <!-- ********** BARRA DE NAVEGACIÓN -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">    
+      <a class="navbar-brand" id="logo-nav" href="index.html">Animaciones</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio <span class="sr-only">Inicio</span></a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="transiciones.html">Transiciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="trasformaciones.html">Transformaciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="animaciones.html">Animaciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="animaciones2.html">Aplicaciones</a>
+          </li>
+        </ul>
+      </div>
+    </div><!-- /.container -->
+  </nav>
+  <!-- /. BARRA DE NAVEGACIÓN -->  
+  <!-- ********** CONTENIDO -->
+  <div id="transiciones_cont">
+  	<div class="container">
+      <h1>Transciciones</h1>
+      <p>Las transiciones CSS, proporcionan una forma de animar los cambios de las propiedades CSS, en lugar de que los cambios surtan efecto de manera instantánea.</p>
+      <p>Por ejemplo, si cambias el color de un elemento de blanco a negro, normalmente el cambio es instantáneo. Al habilitar las transiciones CSS, el cambio sucede en un intervalo de tiempo que puedes especificar, siguiendo una curva de aceleración que puedes personalizar.<p>
+      <br>
+  		<div class="row">
+  			<div class="col-12 col-sm-6">
+  				<h3>Sintaxis de transiciones</h3><br>
+  				<div class="tarjeta">
+  					<center><div class="pelota"></div></center>
+  					<br>            
+  					<code>
+  						transition-property: width,height;<br>
+  						transition-duration: 1s;<br>  						
+  						transition-delay: .2s;<br>
+  						transition-timing-function: ease;
+  					</code>
+  				</div><!-- /.tarjeta -->
+  				<br>
+	  			<div class="tarjeta">
+	  				<p class="texto">Este texto cambia al hacer hover sobre el</p>
+	  				<br>
+            CSS
+              <pre>
+              .texto {
+                color: #444;
+                font-size: 40px;
+                font-weight: bolder;
+                text-align: center;
+                transition: color .7s ease-out;
+              }
+
+              .texto:hover {
+                color: #62b2e5;
+              }
+              </pre>
+	  			</div><!-- /.tarjeta -->				
+  			</div><!-- /.col -->
+
+  			<div class="col-12 col-sm-6">
+  				<h3>Transiciones de interacción</h3><br>
+  				<div class="tarjeta">
+  					<div class="canasta">
+  						<div class="pelotas a">Hola</div>
+  						<div class="pelotas b">Mundo!</div>
+  					</div>
+  					<br>
+  					<code>
+  						transition: 1s .2s;
+  					</code>
+  				</div><!-- /.tarjeta -->
+  				<br>
+	  			<div class="tarjeta">
+	  				<div class="cuadro"></div>
+	  				<br>
+            CSS
+            	<pre>
+              .cuadro {
+              	background: #ff5733;
+              	border-radius: 0 25px 25px 0;
+              	height: 100px;
+              	transition: width 2s linear.5s;
+              	width: 100px;
+              }
+              .cuadro:hover {
+              	width: 300px;
+              }
+            	</pre>	  				
+	  			</div><!-- /.tarjeta -->				
+  			</div><!-- /.col -->
+  		</div><!-- /.row -->
+      <br>
+      <p><code>transition-property</code> = Especifica el nombre o nombres de las propiedades CSS a las que deberían aplicarse las transiciones. Sólo las propiedades que se enumeran aquí son animadas durante las transiciones; los cambios en el resto de las propiedades suceden de manera instantánea como siempre.</p>
+
+      <p><code>transition-duration </code> = Especifica la duración en la que sucederán las transiciones. Puedes especificar una única duración que se aplique a todas las propiedades durante la transición o valores múltiples que permitan a cada propiedad de transición un período de tiempo diferente.</p>
+
+      <p><code>transition-timing-function</code> = Especifica la curva cúbica bézier que se usa para definir cómo se computan los valores intermedios para las propiedades.</p>
+      <p><code>transition-delay </code> = Define el tiempo de espera entre el momento en que se cambia una propiedad y el inicio de la transición.</p>
+  	</div><!-- /.container -->    
+  </div><!-- /. CONTENIDO -->  
+********** FOOTER -->
+<div class="footer" id="footer">
+    <div id="footer-social">
+      <!-- Para ver en la we https://caballero73.github.io/animacion-w/ -->
+      <a href="https://github.com/Caballero73/animacion-w" target="_blank"><div class="iconos">
+        <i class="fa fa-github fa-lg"></i>
+      </div></a>
+      <a href="https://www.linkedin.com/in/enrique-valerio-6b347b126/" target="_blank"><div class="iconos">
+        <i class="fa fa-linkedin fa-lg"></i>
+      </div></a>
+    </div>
+    <p class="autor text-center"><span class="fa fa-cc"></span><span> &nbsp; Enrique J. Valerio G. 2018 </span><span> &nbsp; | &nbsp; </span>
+    <span> Powered by  <span class="">Enrique Valerio</span> </span></p>
+</div>
+<!-- /. FOOTER
+    <!-- ************* CORE JS -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/typed.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/wow.js"></script>
+    <script src="assets/js/app.min.js"></script>    
+</body>
+</html>

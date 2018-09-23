@@ -1,0 +1,84 @@
+/******************************
+ESTILOS CONTENIDO TRANSICIONES: transiciones_cont.css;
+*******************************/
+#transiciones_cont {
+	padding: 3rem 0 12rem 0;
+
+	& .canasta {
+		border-radius: 5rem;
+		border: solid 1px var(--secondary-color);
+		cursor: pointer;
+		height: 11rem;
+		padding: .5rem;
+		position: relative;
+
+		& .pelotas {
+		align-items: center;
+		background-color: silver;
+		border-radius: 50%;
+		color: var(--white-color);
+		display: flex;
+		height: 10rem;
+		justify-content: center;
+		position: absolute;
+		transition: 1s .2s;
+		width: 10rem;
+
+			&.a {
+				background: var(--secondary-color);
+				left: .5rem;
+			}
+
+			&.b {
+				background: var(--primary-color);
+				right: .5rem;
+			}
+		}
+		&:hover .pelotas.a {
+			left: calc(50% - 10rem);
+		}
+		&:hover .pelotas.b {
+			right: calc(50% - 10rem);
+		}
+	}
+	& .cuadro {
+	    background: var(--secondary-color);
+	    border-radius: 0 25px 25px 0;
+	    height: 10rem;
+	    transition: width 2s linear .5s;
+	    width: 10rem;
+		&:hover {
+	    width: 300px;
+	  }
+	}
+	& .pelota {
+		background-color: var(--primary-color);
+		border-radius: 50%;
+		height: 10rem;
+		width: 10rem;
+		cursor: pointer;
+		transition-property: width,height;
+		transition-duration: 1s;
+		transition-delay: .2s;
+		transition-timing-function: ease;
+
+
+		&:hover {
+			height: 12rem;
+			width: 12rem;
+		}
+	}
+	& .texto {
+		color: var(--text-color);
+		font-size: 4rem;
+		font-weight: bolder;
+		text-align: center;
+		transition: color .7s ease-out;
+
+		&:hover {
+			color: var(--primary-color);
+		}
+	}
+}
+
+/* /.ESTILOS CONTENIDO TRANSICIONES */
