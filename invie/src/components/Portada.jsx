@@ -13,7 +13,7 @@ function mapStateToProps(state) {
 
 class Portada extends Component {
   renderHeart() {
-    const hearts = new Array(200).fill({}) // numero de corazones!
+    const hearts = new Array(150).fill({}) // numero de corazones!
     return (
       hearts.map((element, index) => {
         const style = {
